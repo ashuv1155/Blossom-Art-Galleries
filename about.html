@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Blossom Art Galleries</title>
+  <!-- Tailwind CSS (Production build) -->
+  <link rel="stylesheet" href="tailwind.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .blur-sm {
+      filter: blur(4px);
+    }
+  </style>
+</head>
+
+<body class="font-sans antialiased bg-white text-gray-900 flex flex-col min-h-screen overflow-x-hidden">
+
+  <!-- NAVBAR (Copied from index.html) -->
+  <header id="navbar" class="fixed top-0 z-50 w-full transition-all duration-500 bg-white border-b border-gray-100">
+    <div class="container mx-auto px-4 h-20 flex items-center justify-between">
+      <a href="index.html"
+        class="flex flex-col items-center cursor-pointer select-none transition-transform hover:scale-105 duration-300">
+        <div class="font-serif text-[1.1rem] font-bold tracking-[0.18em] leading-none text-gray-900">Blossom Art</div>
+        <div class="text-[0.5rem] uppercase tracking-[0.45em] mt-1 text-gray-400 font-medium">Galleries</div>
+      </a>
+      <nav class="hidden md:flex items-center gap-10 text-[0.75rem] font-semibold tracking-[0.15em] text-gray-700">
+        <a href="index.html" class="relative py-1 group cursor-pointer">
+          <span class="transition-colors duration-200 group-hover:text-primary">HOME</span>
+          <span
+            class="absolute -bottom-0.5 left-0 h-[2px] bg-primary rounded-full w-0 transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="about.html" class="relative py-1 group cursor-pointer text-primary">
+          <span class="transition-colors duration-200 group-hover:text-primary">ABOUT US</span>
+          <span class="absolute -bottom-0.5 left-0 h-[2px] bg-primary rounded-full w-full"></span>
+        </a>
+        <div class="relative" id="product-dropdown-trigger">
+          <button class="relative py-1 group cursor-pointer flex items-center gap-1 outline-none">
+            <span class="transition-colors duration-200 group-hover:text-primary">PRODUCT</span>
+            <i data-lucide="chevron-down" class="w-3 h-3 text-gray-400 group-hover:text-primary transition-colors"></i>
+            <span
+              class="absolute -bottom-0.5 left-0 h-[2px] bg-primary rounded-full w-0 transition-all duration-300 group-hover:w-[calc(100%-16px)]"></span>
+          </button>
+          <!-- Dropdown -->
+          <div id="product-dropdown-content"
+            class="hidden absolute top-full left-0 w-52 bg-white rounded-xl shadow-xl border border-gray-100 mt-3 p-1.5 flex flex-col">
+            <a href="product.html?category=all"
+              class="text-sm py-2 px-3 rounded-lg hover:bg-rose-50 hover:text-primary transition-colors text-gray-700">All
+              Products</a>
+            <a href="product.html?category=artificial-flowers"
+              class="text-sm py-2 px-3 rounded-lg hover:bg-rose-50 hover:text-primary transition-colors text-gray-700">Artificial
+              Flowers</a>
+            <a href="product.html?category=dried-decorations"
+              class="text-sm py-2 px-3 rounded-lg hover:bg-rose-50 hover:text-primary transition-colors text-gray-700">Dried
+              Decorations</a>
+            <a href="product.html?category=event-decor"
+              class="text-sm py-2 px-3 rounded-lg hover:bg-rose-50 hover:text-primary transition-colors text-gray-700">Event
+              Decor</a>
+            <a href="product.html?category=floral-arrangements"
+              class="text-sm py-2 px-3 rounded-lg hover:bg-rose-50 hover:text-primary transition-colors text-gray-700">Floral
+              Arrangements</a>
+            <a href="product.html?category=floral-decor"
+              class="text-sm py-2 px-3 rounded-lg hover:bg-rose-50 hover:text-primary transition-colors text-gray-700">Floral
+              Decor</a>
+            <a href="product.html?category=floral-supplies"
+              class="text-sm py-2 px-3 rounded-lg hover:bg-rose-50 hover:text-primary transition-colors text-gray-700">Floral
+              Supplies</a>
+            <a href="product.html?category=hanging-decorations"
+              class="text-sm py-2 px-3 rounded-lg hover:bg-rose-50 hover:text-primary transition-colors text-gray-700">Hanging
+              Decorations</a>
+
+          </div>
+        </div>
+        <a href="contact.html" class="relative py-1 group cursor-pointer">
+          <span class="transition-colors duration-200 group-hover:text-primary">CONTACT</span>
+          <span
+            class="absolute -bottom-0.5 left-0 h-[2px] bg-primary rounded-full w-0 transition-all duration-300 group-hover:w-full"></span>
+        </a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <button id="mobile-menu-btn"
+          class="md:hidden text-gray-600 hover:text-primary transition-all p-2 rounded-full hover:bg-gray-100 hover:scale-110 active:scale-90">
+          <i data-lucide="menu" id="mobile-menu-icon" class="w-5 h-5"></i>
+          <i data-lucide="x" id="mobile-menu-close-icon" class="w-5 h-5 hidden"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu"
+    class="hidden fixed top-20 left-0 right-0 z-40 bg-white/95 backdrop-blur-xl border-b border-gray-100 shadow-2xl md:hidden">
+    <nav class="container mx-auto px-6 py-6 flex flex-col gap-1">
+      <a href="index.html"
+        class="block text-lg font-serif font-semibold py-3 border-b border-gray-100 transition-colors text-gray-800 hover:text-primary">Home</a>
+      <a href="about.html"
+        class="block text-lg font-serif font-semibold py-3 border-b border-gray-100 transition-colors text-primary">About
+        Us</a>
+      <a href="product.html"
+        class="block text-lg font-serif font-semibold py-3 border-b border-gray-100 transition-colors text-gray-800 hover:text-primary">Products</a>
+      <a href="contact.html"
+        class="block text-lg font-serif font-semibold py-3 border-b border-gray-100 transition-colors text-gray-800 hover:text-primary">Contact</a>
+    </nav>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main class="flex-1 mt-20">
+    <!-- Page Header -->
+    <div class="relative bg-zinc-950 text-white py-32 overflow-hidden">
+      <div class="absolute inset-0 opacity-25">
+        <img src="assets/images/flower-bunches.png" alt="" class="w-full h-full object-cover blur-sm scale-110">
+      </div>
+      <div class="absolute inset-0 bg-gradient-to-b from-zinc-950/70 to-zinc-950/96"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(192,57,43,0.15),transparent_70%)]"></div>
+      <div class="container mx-auto px-4 text-center relative z-10 animate-fade-in-up">
+        <p class="text-[0.65rem] uppercase tracking-[0.55em] text-white/40 mb-4 font-medium">Our Story</p>
+        <h1 class="text-5xl md:text-7xl font-serif font-bold mb-6">About Us</h1>
+        <div class="flex items-center justify-center gap-2 text-sm text-white/35 uppercase tracking-wider font-medium">
+          <a href="index.html" class="hover:text-white transition-colors">Home</a>
+          <span>/</span>
+          <span class="text-white/65">About Us</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Story Section -->
+    <div class="container mx-auto px-4 py-24">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        <div class="relative animate-on-scroll" style="animation-delay: 0s;">
+          <div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl">
+            <img src="assets/images/hero.png" alt="Diverse women holding vibrant floral bouquets"
+              class="w-full h-[500px] md:h-[580px] object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+          </div>
+
+          <div
+            class="absolute -top-6 -left-6 w-28 h-28 rounded-full border-2 border-rose-200/70 hidden md:block pointer-events-none">
+          </div>
+          <div
+            class="absolute top-1/3 -left-10 w-14 h-14 rounded-full border border-rose-200/40 hidden md:block pointer-events-none">
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-6 animate-on-scroll" style="animation-delay: 0.2s;">
+          <p class="text-[0.65rem] text-primary uppercase tracking-[0.45em] font-semibold">Who We Are</p>
+          <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900 leading-tight">
+            A Passion for<br>Lifelike Flora
+          </h2>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-[2px] bg-primary"></div>
+            <div class="w-3 h-3 rounded-full bg-primary/20"></div>
+          </div>
+          <p class="text-gray-600 leading-relaxed">
+            Blossom Art Galleries is a premier wholesale artificial flower company supplying high-quality decorative
+            plants and flowers to retailers, event planners, and interior designers across the United States.
+          </p>
+          <p class="text-gray-600 leading-relaxed">
+            Founded with a passion for beautiful, lifelike artificial flora, we source only the most realistic and
+            durable materials. Our collection spans from delicate creepers and bold flower bunches to elegant fittings
+            and grass mats — ensuring every space can be transformed with nature's beauty without the maintenance.
+          </p>
+          <a href="contact.html">
+            <button
+              class="mt-4 bg-primary text-white px-8 py-3.5 rounded-full font-semibold text-sm shadow-lg shadow-rose-200 w-fit transition-transform hover:scale-105 active:scale-95">
+              Contact Our Team
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <section class="py-20 bg-[#fafaf8]">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div class="flex flex-col items-center gap-4 animate-on-scroll">
+            <div class="w-12 h-12 bg-rose-50 text-primary rounded-2xl flex items-center justify-center shadow-sm">
+              <i data-lucide="package" class="w-5 h-5"></i>
+            </div>
+            <div class="text-4xl md:text-5xl font-serif font-bold text-gray-900">
+              <span class="counter" data-target="303">0</span>+
+            </div>
+            <div class="text-gray-500 text-sm">Unique Products</div>
+          </div>
+          <div class="flex flex-col items-center gap-4 animate-on-scroll" style="animation-delay: 0.1s;">
+            <div class="w-12 h-12 bg-rose-50 text-primary rounded-2xl flex items-center justify-center shadow-sm">
+              <i data-lucide="layout-grid" class="w-5 h-5"></i>
+            </div>
+            <div class="text-4xl md:text-5xl font-serif font-bold text-gray-900">
+              <span class="counter" data-target="8">0</span>
+            </div>
+            <div class="text-gray-500 text-sm">Product Categories</div>
+          </div>
+          <div class="flex flex-col items-center gap-4 animate-on-scroll" style="animation-delay: 0.2s;">
+            <div class="w-12 h-12 bg-rose-50 text-primary rounded-2xl flex items-center justify-center shadow-sm">
+              <i data-lucide="users" class="w-5 h-5"></i>
+            </div>
+            <div class="text-4xl md:text-5xl font-serif font-bold text-gray-900">
+              <span class="counter" data-target="1000">0</span>+
+            </div>
+            <div class="text-gray-500 text-sm">Happy Clients</div>
+          </div>
+          <div class="flex flex-col items-center gap-4 animate-on-scroll" style="animation-delay: 0.3s;">
+            <div class="w-12 h-12 bg-rose-50 text-primary rounded-2xl flex items-center justify-center shadow-sm">
+              <i data-lucide="map-pin" class="w-5 h-5"></i>
+            </div>
+            <div class="text-3xl md:text-4xl font-serif font-bold text-gray-900">Mumbai</div>
+            <div class="text-gray-500 text-sm">Operational Office</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Differences -->
+    <section class="py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <p class="text-[0.65rem] text-primary uppercase tracking-[0.45em] mb-3 font-semibold">What Sets Us Apart</p>
+          <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900">Our Difference</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div
+            class="p-8 rounded-2xl bg-[#fafaf8] border border-transparent hover:border-rose-100 hover:bg-rose-50/20 transition-all duration-300 cursor-default animate-on-scroll hover:-translate-y-1"
+            style="animation-delay: 0s;">
+            <div class="w-8 h-[2px] bg-primary mb-5"></div>
+            <h3 class="text-xl font-serif font-bold text-gray-900 mb-3">Uncompromising Quality</h3>
+            <p class="text-gray-600 leading-relaxed text-sm">We source only the most realistic, durable materials —
+              every product is crafted to look and feel indistinguishable from real botanicals.</p>
+          </div>
+          <div
+            class="p-8 rounded-2xl bg-[#fafaf8] border border-transparent hover:border-rose-100 hover:bg-rose-50/20 transition-all duration-300 cursor-default animate-on-scroll hover:-translate-y-1"
+            style="animation-delay: 0.1s;">
+            <div class="w-8 h-[2px] bg-primary mb-5"></div>
+            <h3 class="text-xl font-serif font-bold text-gray-900 mb-3">Vast Variety</h3>
+            <p class="text-gray-600 leading-relaxed text-sm">From trailing ivy creepers and bold flower bunches to
+              elegant fittings and grass mats — over 500 unique products across 8 categories.</p>
+          </div>
+          <div
+            class="p-8 rounded-2xl bg-[#fafaf8] border border-transparent hover:border-rose-100 hover:bg-rose-50/20 transition-all duration-300 cursor-default animate-on-scroll hover:-translate-y-1"
+            style="animation-delay: 0.2s;">
+            <div class="w-8 h-[2px] bg-primary mb-5"></div>
+            <h3 class="text-xl font-serif font-bold text-gray-900 mb-3">Wholesale Advantage</h3>
+            <p class="text-gray-600 leading-relaxed text-sm">Competitive bulk pricing and dedicated account managers for
+              retailers, event planners, and interior designers across the US.</p>
+          </div>
+          <div
+            class="p-8 rounded-2xl bg-[#fafaf8] border border-transparent hover:border-rose-100 hover:bg-rose-50/20 transition-all duration-300 cursor-default animate-on-scroll hover:-translate-y-1"
+            style="animation-delay: 0.3s;">
+            <div class="w-8 h-[2px] bg-primary mb-5"></div>
+            <h3 class="text-xl font-serif font-bold text-gray-900 mb-3">Fast Nationwide Shipping</h3>
+            <p class="text-gray-600 leading-relaxed text-sm">Five warehouse locations ensure fast, reliable delivery no
+              matter where your business operates.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 bg-zinc-950 text-white text-center relative overflow-hidden">
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(192,57,43,0.18),transparent_65%)]"></div>
+      <div class="container mx-auto px-4 relative z-10 animate-on-scroll">
+        <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4">Ready to Work Together?</h2>
+        <p class="text-gray-400 max-w-md mx-auto mb-8">
+          Contact our team to discuss wholesale pricing, custom orders, and product availability.
+        </p>
+        <a href="contact.html">
+          <button
+            class="bg-white text-gray-900 px-10 py-4 rounded-full font-semibold text-sm shadow-xl transition-transform hover:scale-105 active:scale-95">
+            Get in Touch
+          </button>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#0f0f0f] text-gray-500 pt-20 pb-8 relative overflow-hidden mt-auto">
+    <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-rose-800/40 to-transparent">
+    </div>
+    <div class="absolute top-0 left-1/4 w-64 h-64 rounded-full bg-rose-900/5 blur-3xl pointer-events-none"></div>
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-16">
+        <div class="lg:col-span-1 flex flex-col gap-5">
+          <a href="index.html">
+            <div class="cursor-pointer select-none">
+              <div class="font-serif text-base font-bold tracking-[0.18em] text-white leading-none">Blossom Art</div>
+              <div class="text-[0.5rem] uppercase tracking-[0.45em] mt-1 text-gray-600 font-medium">Galleries</div>
+            </div>
+          </a>
+          <p class="text-sm text-gray-600 leading-relaxed">Premium artificial flora for interior designers, event
+            planners, and retailers nationwide.</p>
+          <a href="https://wa.me/919321421639?text=Hello,%20I'd%20like%20to%20inquire%20about%20your%20collection."
+            target="_blank">
+            <button
+              class="bg-teal-600 hover:bg-teal-500 text-white px-5 py-2.5 rounded-xl font-medium text-sm transition-all w-fit shadow-lg shadow-teal-900/20 hover:scale-105 active:scale-95">Enquire
+              Now</button>
+          </a>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-6 uppercase tracking-[0.18em] text-xs">About Us</h4>
+          <ul class="flex flex-col gap-2.5 text-sm">
+            <li><a href="about.html"
+                class="text-gray-600 hover:text-white transition-all duration-200 hover:translate-x-1 inline-block">About
+                Us</a></li>
+            <li><a href="about.html"
+                class="text-gray-600 hover:text-white transition-all duration-200 hover:translate-x-1 inline-block">Our
+                Difference</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-6 uppercase tracking-[0.18em] text-xs">Help</h4>
+          <ul class="flex flex-col gap-2.5 text-sm">
+            <li><a href="flower-care.html"
+                class="text-gray-600 hover:text-white transition-all duration-200 hover:translate-x-1 inline-block">Flower
+                Care</a></li>
+            <li><a href="help-center.html"
+                class="text-gray-600 hover:text-white transition-all duration-200 hover:translate-x-1 inline-block">Help
+                Center</a></li>
+            <li><a href="shipping.html"
+                class="text-gray-600 hover:text-white transition-all duration-200 hover:translate-x-1 inline-block">Shipping</a>
+            </li>
+            <li><a href="privacy.html"
+                class="text-gray-600 hover:text-white transition-all duration-200 hover:translate-x-1 inline-block">Privacy
+                Policy</a></li>
+            <li><a href="terms.html"
+                class="text-gray-600 hover:text-white transition-all duration-200 hover:translate-x-1 inline-block">Terms
+                of Use</a></li>
+            <li><a href="accessibility.html"
+                class="text-gray-600 hover:text-white transition-all duration-200 hover:translate-x-1 inline-block">Accessibility</a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-6 uppercase tracking-[0.18em] text-xs">Locations</h4>
+          <ul class="flex flex-col gap-2.5 text-sm">
+            <li class="text-gray-600">Mumbai (Operational Office)</li>
+            <li class="text-gray-600">Maharashtra, India</li>
+          </ul>
+        </div>
+        <div class="lg:col-span-1">
+          <h4 class="text-white font-semibold mb-6 uppercase tracking-[0.18em] text-xs">Newsletter</h4>
+          <div
+            class="flex rounded-xl overflow-hidden border border-zinc-800 focus-within:border-zinc-600 transition-colors">
+            <input type="email" placeholder="Email address..."
+              class="bg-transparent px-4 py-3 w-full text-sm outline-none text-gray-300 placeholder-gray-700 min-w-0">
+            <button
+              class="bg-primary hover:bg-rose-700 text-white px-4 py-3 transition-all flex-shrink-0 hover:scale-105 active:scale-95"><i
+                data-lucide="send" class="w-4 h-4"></i></button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="pt-8 border-t border-zinc-900 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-700">
+        <p>Copyright © 2020 Blossom Art Galleries.</p>
+        <div class="flex items-center gap-4">
+          <span class="font-medium text-gray-700">Visa</span>
+          <span class="font-medium text-gray-700">Mastercard</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.453.0/dist/umd/lucide.min.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+  <script src="script.js"></script>
+
+  <!-- Custom Script for Animated Counter -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const counters = document.querySelectorAll('.counter');
+
+      const counterObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const target = parseInt(entry.target.getAttribute('data-target'));
+            const duration = 1800; // ms
+            const stepTime = Math.abs(Math.floor(duration / target));
+            let current = 0;
+            const increment = target > 100 ? 10 : 1;
+
+            const timer = setInterval(() => {
+              current += increment;
+              if (current >= target) {
+                entry.target.textContent = target;
+                clearInterval(timer);
+              } else {
+                entry.target.textContent = current;
+              }
+            }, stepTime);
+
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      counters.forEach(counter => {
+        counterObserver.observe(counter);
+      });
+    });
+  </script>
+</body>
+
+</html>
