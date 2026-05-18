@@ -1,0 +1,4 @@
+*.backup
+*.backup.csv
+.DS_Store
+assets/images/products/unused/
