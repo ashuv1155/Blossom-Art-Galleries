@@ -1,19 +1,19 @@
 Product ID,Image Filename,Product Name,Category,Description
 BAG ED 1,1.jpg,Green Floral Wire Support Sticks / Flower Sticks,event-decor,"Bundle of sturdy green-coated
                                     floral wire sticks designed to support and reinforce flower stems."
-BAG ED 2,2.jpg,"Peach, Pink, and Cream Rose Table Runner",floral-arrangements,"A lush artificial floral
+BAG FA 1,2.jpg,"Peach, Pink, and Cream Rose Table Runner",floral-arrangements,"A lush artificial floral
                                     runner featuring mixed peach roses and dense green foliage for table decor."
-BAG ED 3,3.jpg,Artificial White Wildflower Hedge / Wall Border Panel,floral-arrangements,"A dense rectangular
+BAG FA 2,3.jpg,Artificial White Wildflower Hedge / Wall Border Panel,floral-arrangements,"A dense rectangular
                                     arrangement of white artificial wildflowers and green ferns ideal for wall or floor
                                     borders."
-BAG ED 4,4.jpg,"Blue, Pink, and White Mixed Floral Runner / Floral Bed",floral-arrangements,"A vibrant mix of blue
+BAG FA 3,4.jpg,"Blue, Pink, and White Mixed Floral Runner / Floral Bed",floral-arrangements,"A vibrant mix of blue
                                     hydrangeas, white carnations, and pink lilies accented with silver-white leaf
                                     sprays."
-BAG ED 5,5.jpg,Classic White and Cream Rose Floral Runner,floral-arrangements,"Elegant long-form arrangement
+BAG FA 4,5.jpg,Classic White and Cream Rose Floral Runner,floral-arrangements,"Elegant long-form arrangement
                                     of premium white roses and eucalyptus leaves for wedding aisles or tables."
-BAG ED 6,6.jpg,Mixed Pink Peony and White Rose Runner with Dried Palm Fans,floral-arrangements,"Luxury floral runner featuring
+BAG FA 5,6.jpg,Mixed Pink Peony and White Rose Runner with Dried Palm Fans,floral-arrangements,"Luxury floral runner featuring
                                     deep pink peonies, white roses, and metallic gold palm fan accents."
-BAG ED 7,7.jpg,Mixed Pink and Hot Pink Rose Flower Wall Panel,floral-arrangements,"A vibrant high-density
+BAG FA 6,7.jpg,Mixed Pink and Hot Pink Rose Flower Wall Panel,floral-arrangements,"A vibrant high-density
                                     arrangement of hot pink, soft pink, and peach roses with dark green leaves."
 BAG TGH 1,8.jpg,Artificial White Mogra (Jasmine) Hanging Garlands / Laris,traditional-garlands,"Traditional long hanging
                                     strings of artificial white jasmine buds used for festive and wedding backdrops."
@@ -110,18 +110,18 @@ BAG AF 6,47.jpg,Multi-Head Artificial Sunflower Stem / Branch,artificial-flowers
                                     stem featuring five bright yellow blossom heads and detailed green foliage."
 BAG AF 7,48.jpg,Single Artificial Pink Lotus Flower Stem with Leaf,artificial-flowers,"A realistic artificial lotus
                                     stem featuring two open pink blossoms, a closed bud, and broad green leaves."
-BAG ED 8,49.jpg,Long Artificial Pink and White Cherry Blossom Stems / Branches,event-decor,"Tall artificial branches dense
+BAG ED 2,49.jpg,Long Artificial Pink and White Cherry Blossom Stems / Branches,event-decor,"Tall artificial branches dense
                                     with delicate cherry blossom petals available in soft pink and pure white."
-BAG ED 9,50.jpg,Pastel Artificial Delphinium / Cherry Blossom Floral Sprays,event-decor,"A colorful assortment of
+BAG ED 3,50.jpg,Pastel Artificial Delphinium / Cherry Blossom Floral Sprays,event-decor,"A colorful assortment of
                                     artificial cherry blossom sprays in aqua blue, pink, lilac, white, and peach."
-BAG ED 10,51.jpg,Vibrant Artificial Gladiolus / Snapdragon Flower Stems,event-decor,"Tall artificial floral spikes
+BAG ED 4,51.jpg,Vibrant Artificial Gladiolus / Snapdragon Flower Stems,event-decor,"Tall artificial floral spikes
                                     featuring dense blossoms in royal blue, white, pink, lavender, and bright red."
-BAG ED 11,52.jpg,38-Inch Artificial Cherry Blossom Flower Branches,event-decor,"Premium 38-inch artificial
+BAG ED 5,52.jpg,38-Inch Artificial Cherry Blossom Flower Branches,event-decor,"Premium 38-inch artificial
                                     flowering branches available in a variety of vibrant colors including mint, pink,
                                     white, and red."
-BAG ED 12,53.jpg,Decorative Dried Feather and Faux Gold Leaf Stems,event-decor,"Elegant artificial stems
+BAG ED 6,53.jpg,Decorative Dried Feather and Faux Gold Leaf Stems,event-decor,"Elegant artificial stems
                                     featuring layered cream and reddish-brown feathers with gold leaf accents."
-BAG ED 13,54.jpg,Colorful Faux Teardrop Leaf Sprays / Branch Bunches,artificial-leaves,"Vibrant bunches of artificial
+BAG AL 1,54.jpg,Colorful Faux Teardrop Leaf Sprays / Branch Bunches,artificial-leaves,"Vibrant bunches of artificial
                                     teardrop leaves available in white, red, magenta, orange, and pink hues."
 BAG DD 1,55.jpg,Natural Dried Palm Leaves / Cut Palm Spears on Sticks,dried-decorations,"Natural dried palm leaves
                                     trimmed into sharp spear shapes for a modern, rustic aesthetic."
@@ -135,11 +135,11 @@ BAG DD 5,59.jpg,Miniature Natural Dried Palm Spears,dried-decorations,"Smaller-s
                                     spears with light natural tones ideal for tabletop vase arrangements."
 BAG AF 8,60.jpg,Handmade Cream Sola Wood Flower Head / Rose,artificial-flowers,"A delicate, handcrafted flower
                                     made from sustainable sola wood in a soft cream finish."
-BAG ED 14,61.jpg,Assorted Painted / Dyed Dried Palm Fan Leaves,event-decor,"Sturdy dried palm fans
+BAG ED 7,61.jpg,Assorted Painted / Dyed Dried Palm Fan Leaves,event-decor,"Sturdy dried palm fans
                                     available in a variety of dyed colors including green, yellow, pink, and terracotta."
 BAG FS 1,62.jpg,Woven Wicker Rattan Decorative Spheres / Balls,floral-supplies,"Hand-woven natural wicker
                                     balls ideal for rustic bowl fillers or hanging decor."
-BAG ED 15,63.jpg,Dyed Dried Wheat Stalk Bundles / Preserved Grass,event-decor,"Natural dried wheat stalks
+BAG ED 8,63.jpg,Dyed Dried Wheat Stalk Bundles / Preserved Grass,event-decor,"Natural dried wheat stalks
                                     available in vibrant red, yellow, and green dyes for seasonal arrangements."
 BAG DD 6,64.jpg,Wide Natural Fan-Cut Dried Palm Leaves on Sticks,dried-decorations,"Wide, dried fan palm leaves
                                     with sharp architectural lines for tropical-themed decor."
@@ -177,15 +177,15 @@ BAG DD 19,80.jpg,Large High-Volume Natural Brown Pampas Grass Stalk Plume,dried-
                                     grass plume with a high-volume head and sturdy natural stem."
 BAG AF 9,81.jpg,Vibrantly Colored Handmade Sola Wood Flower Heads,artificial-flowers,"Handcrafted spherical sola
                                     wood shells designed for creating custom artificial floral arrangements."
-BAG ED 16,82.jpg,Woven Bamboo Mini Goblet Urns / Small Decorative Vases,event-decor,"A sharply trimmed,
+BAG ED 9,82.jpg,Woven Bamboo Mini Goblet Urns / Small Decorative Vases,event-decor,"A sharply trimmed,
                                     eco-friendly dried palm leaf spear that adds a modern architectural touch to decor."
-BAG ED 17,83.jpg,Assorted Vibrantly Dyed Cut Dried Palm Fan Spears,event-decor,"A large-scale natural dried
+BAG ED 10,83.jpg,Assorted Vibrantly Dyed Cut Dried Palm Fan Spears,event-decor,"A large-scale natural dried
                                     palm fan featuring a robust stem and wide, textured leaf surface."
 BAG FS 5,84.jpg,Hanging Woven Bamboo / Rattan Bell-Shaped Lantern Pods,floral-supplies,"Elegantly hand-cut dried palm
                                     spear with a slender profile, perfect for minimalist vase styling."
 BAG FS 6,85.jpg,Bleached Natural Grass / Twig Hand-Twisted Wreath Bases,floral-supplies,"A collection of lush,
                                     feathered dried cycas leaves in a muted natural green for tropical styling."
-BAG ED 18,86.jpg,Hanging Decorative Golden Mesh Bell with Faux Red Rose,event-decor,"Soft and airy bleached white
+BAG ED 11,86.jpg,Hanging Decorative Golden Mesh Bell with Faux Red Rose,event-decor,"Soft and airy bleached white
                                     pampas grass plumes that provide a delicate, bohemian aesthetic to any space."
 BAG DD 20,87.jpg,Natural Brown Dried Grass / Preserved Gypsophila Branch Bundle,dried-decorations,"A dense bunch of preserved
                                     white Gypsophila flowers ideal for ethereal and romantic floral designs."
@@ -205,7 +205,7 @@ BAG FS 7,94.jpg,Bulk Sack of Round White Sola Wood Balls,floral-supplies,"A sing
                                     dried palm leaf spear ideal for modern bohemian floral displays."
 BAG DD 24,95.jpg,Metallic Gold Painted Trimmed Dried Palm Spear Bunch,dried-decorations,"Feather-like dried palm fronds
                                     in a natural sage green tone, perfect for large-scale arrangements."
-BAG ED 19,96.jpg,Woven Bamboo Mini Goblet Decorative Pods,event-decor,"Soft, airy bleached white
+BAG ED 12,96.jpg,Woven Bamboo Mini Goblet Decorative Pods,event-decor,"Soft, airy bleached white
                                     pampas plumes that add a high-end bohemian touch to home decor."
 BAG AP 1,97.jpg,Potted Artificial Areca Palm Tree Plant,artificial-plants,"A lush bunch of preserved
                                     white Gypsophila flowers suitable for delicate and romantic wedding decor."
@@ -291,7 +291,7 @@ BAG AFB 19,137.jpg,Faux Peony Bud / Ranunculus Bush Bunches,artificial-flower-bu
                                     white Gypsophila flowers perfect for ethereal wedding and event decor."
 BAG AFB 20,138.jpg,Mixed Artificial Camellia / Daisy Bush Bunches,artificial-flower-bunches,"A textured collection of
                                     various natural dried grasses and seed pods for rustic centerpiece designs."
-BAG AP 21,139.jpg,Artificial Faux Fern and Mixed Greenery Bush Bunches,artificial-leaves,"A singular, voluminous dried
+BAG AL 2,139.jpg,Artificial Faux Fern and Mixed Greenery Bush Bunches,artificial-leaves,"A singular, voluminous dried
                                     pampas grass plume with a thick head and sturdy natural reed."
 BAG AFB 21,140.jpg,Small Artificial Pip Berry / Blossom Bush Bunches,artificial-flower-bunches,"Handcrafted open-weave rattan
                                     sphere designed for rustic tabletop accents or decorative bowl fillers."
@@ -303,15 +303,15 @@ BAG AFB 24,143.jpg,Vintage Style Artificial Carnation / Rose Flower Bunches,arti
                                     palm fan featuring a robust stem and wide, textured leaf surface."
 BAG AFB 25,144.jpg,Colorful Artificial Field Chrysanthemum / Pom-Pom Bunches,artificial-flower-bunches,"Elegantly hand-cut dried palm
                                     spear with a slender profile, perfect for minimalist vase styling."
-BAG AF 14,145.jpg,Hanging Artificial Ivy and Clematis Greenery Vines,artificial-flora,"A collection of lush,
+BAG AFL 2,145.jpg,Hanging Artificial Ivy and Clematis Greenery Vines,artificial-flora,"A collection of lush,
                                     feathered dried cycas leaves in a muted natural green for tropical styling."
-BAG AF 15,146.jpg,Artificial Phalaenopsis Orchid Stems / Flower Sprays,artificial-flowers,"Soft and airy bleached white
+BAG AF 14,146.jpg,Artificial Phalaenopsis Orchid Stems / Flower Sprays,artificial-flowers,"Soft and airy bleached white
                                     pampas grass plumes that provide a delicate, bohemian aesthetic to any space."
 BAG AFB 26,147.jpg,Vintage Style Artificial Rose and Eucalyptus Leaf Bunches,artificial-flower-bunches,"A dense bunch of preserved
                                     white Gypsophila flowers ideal for ethereal and romantic floral designs."
 BAG AFB 27,148.jpg,Mixed Artificial Hydrangea / Orchid Small Flower Bunches,artificial-flower-bunches,"A curated assortment of
                                     various natural dried grasses and seed pods for textured floral displays."
-BAG AF 16,149.jpg,Large Artificial Hydrangea Flower Heads with Stems,artificial-flowers,"A high-volume, fluffy natural
+BAG AF 15,149.jpg,Large Artificial Hydrangea Flower Heads with Stems,artificial-flowers,"A high-volume, fluffy natural
                                     pampas grass stalk featuring a sturdy reed and voluminous feathery head."
 BAG AFB 28,150.jpg,Premium Artificial Open Rose Bouquet Bunches,artificial-flower-bunches,"A handcrafted open-weave
                                     rattan sphere designed for rustic tabletop decor or DIY lighting projects."
@@ -351,7 +351,7 @@ BAG AFB 45,167.jpg,Faux Cherry Blossom / Clematis Flower Heads,artificial-flower
                                     white Gypsophila flowers ideal for ethereal and romantic floral designs."
 BAG AFB 46,168.jpg,Small Artificial Tea Rose Bud Bunches,artificial-flower-bunches,"A curated assortment of
                                     various natural dried grasses and seed pods for textured floral displays."
-BAG AF 17,169.jpg,Long Artificial Delphinium / Snapdragon Flowering Stems,artificial-flowers,"A high-volume, fluffy natural
+BAG AF 16,169.jpg,Long Artificial Delphinium / Snapdragon Flowering Stems,artificial-flowers,"A high-volume, fluffy natural
                                     pampas grass stalk featuring a sturdy reed and voluminous feathery head."
 BAG AFB 47,170.jpg,Faux Spiked Lavender and Lilac Bush Bunches,artificial-flower-bunches,"A handcrafted open-weave
                                     rattan sphere designed for rustic tabletop decor or DIY lighting projects."
@@ -367,7 +367,7 @@ BAG AFB 52,175.jpg,Shabby Chic Faux Ranunculus / Pom-Pom Rose Bunches,artificial
                                     feathered dried cycas leaves in a muted natural green for tropical styling."
 BAG AFB 53,176.jpg,Small Artificial Tea Rose Bud Bunches with Green Foliage,artificial-flower-bunches,"Soft and airy bleached white
                                     pampas grass plumes that provide a delicate, bohemian aesthetic to any space."
-BAG AL 1,177.jpg,Faux Rounded Eucalyptus Leaf Greenery Stems / Bunches,artificial-leaves,"A dense bunch of preserved
+BAG AL 3,177.jpg,Faux Rounded Eucalyptus Leaf Greenery Stems / Bunches,artificial-leaves,"A dense bunch of preserved
                                     white Gypsophila flowers ideal for ethereal and romantic floral designs."
 BAG AFB 54,178.jpg,Faux Spiked Lavender and Heather Flower Bunches,artificial-flower-bunches,"A curated assortment of
                                     various natural dried grasses and seed pods for textured floral displays."
@@ -377,7 +377,7 @@ BAG AFB 56,180.jpg,Hanging Artificial Wisteria and Rose Leaf Vines,artificial-fl
                                     rattan sphere designed for rustic tabletop decor or DIY lighting projects."
 BAG AFB 57,181.jpg,Faux Baby's Breath / Gypsophila White Flower Bush Bunches,artificial-flower-bunches,"Handcrafted spherical sola
                                     wood shells designed for creating custom artificial floral arrangements."
-BAG AF 18,182.jpg,Long-Stemmed Artificial Tiger Lily Flowers,artificial-flowers,"A sharply trimmed,
+BAG AF 17,182.jpg,Long-Stemmed Artificial Tiger Lily Flowers,artificial-flowers,"A sharply trimmed,
                                     eco-friendly dried palm leaf spear that adds a modern architectural touch to decor."
 BAG AFB 58,183.jpg,Faux Clematis / Star Lily Flower Bunches,artificial-flower-bunches,"A large-scale natural dried
                                     palm fan featuring a robust stem and wide, textured leaf surface."
@@ -395,11 +395,11 @@ BAG AFB 64,189.jpg,Mixed Faux Hydrangea and Gerbera Bush Bunches,artificial-flow
                                     pampas grass stalk featuring a sturdy reed and voluminous feathery head."
 BAG AFB 65,190.jpg,Faux Hydrangea Blossom Bush Bunches,artificial-flower-bunches,"A handcrafted open-weave
                                     rattan sphere designed for rustic tabletop decor or DIY lighting projects."
-BAG AFL 2,191.jpg,Small Artificial Baby's Breath / Gypsophila Sprays,artificial-flora,"Handcrafted spherical sola
+BAG AFL 3,191.jpg,Small Artificial Baby's Breath / Gypsophila Sprays,artificial-flora,"Handcrafted spherical sola
                                     wood bases designed for creating custom artificial floral arrangements."
-BAG AL 2,192.jpg,Expandable Willow Wood Trellis Fence with Artificial Leaves,artificial-leaves,"A sharply trimmed,
+BAG AL 4,192.jpg,Expandable Willow Wood Trellis Fence with Artificial Leaves,artificial-leaves,"A sharply trimmed,
                                     eco-friendly dried palm leaf spear that adds a modern architectural touch to decor."
-BAG AL 3,193.jpg,Expandable Willow Wood Trellis Fence with Ivy Leaves,artificial-leaves,"A large-scale natural dried
+BAG AL 5,193.jpg,Expandable Willow Wood Trellis Fence with Ivy Leaves,artificial-leaves,"A large-scale natural dried
                                     palm fan featuring a robust stem and wide, textured leaf surface."
 BAG AGWP 1,194.jpg,Dense Green Boxwood Artificial Grass Wall Hedge Panel,artificial-green-wall-panel,"Elegantly hand-cut dried palm
                                     spear with a slender profile, perfect for minimalist vase styling."
@@ -441,7 +441,7 @@ BAG AGWP 19,212.jpg,Gold and Dusty Pink Artificial Hydrangea Flower Wall Panel,a
                                     eco-friendly dried palm leaf spear that adds a modern architectural touch to decor."
 BAG AGWP 20,213.jpg,Vibrant Green Faux Boxwood Hedge Wall Panel,artificial-green-wall-panel,"A large-scale natural dried
                                     palm fan featuring a robust stem and wide, textured leaf surface."
-BAG FA 1,214.jpg,Large Artificial Hydrangea Flower Table Arrangements,floral-arrangements,"Elegantly hand-cut dried palm
+BAG FA 7,214.jpg,Large Artificial Hydrangea Flower Table Arrangements,floral-arrangements,"Elegantly hand-cut dried palm
                                     spear with a slender profile, perfect for minimalist vase styling."
 BAG AGWP 21,215.jpg,Multi-Color Artificial Hydrangea Flower Wall Panels,artificial-green-wall-panel,"A collection of lush,
                                     feathered dried cycas leaves in a muted natural green for tropical styling."
@@ -449,7 +449,7 @@ BAG AGWP 22,216.jpg,Classic Deep Red Artificial Hydrangea Flower Wall Panel,arti
                                     pampas grass plumes that provide a delicate, bohemian aesthetic to any space."
 BAG AGWP 23,217.jpg,Faux Boxwood Mat Panel with White Tip Details,artificial-green-wall-panel,"A dense bunch of preserved
                                     white Gypsophila flowers ideal for ethereal and romantic floral designs."
-BAG AL 4,218.jpg,Roll of Artificial Ivy / Maple Leaf Privacy Screen,artificial-leaves,"A curated assortment of
+BAG AL 6,218.jpg,Roll of Artificial Ivy / Maple Leaf Privacy Screen,artificial-leaves,"A curated assortment of
                                     various natural dried grasses and seed pods for textured floral displays."
 BAG AGWP 24,219.jpg,Mixed Artificial Hydrangea Flower Wall Panels,artificial-green-wall-panel,"A high-volume, fluffy natural
                                     pampas grass stalk featuring a sturdy reed and voluminous feathery head."
@@ -499,33 +499,33 @@ BAG AGWP 46,241.jpg,Multi-Color Artificial Moss and Micro-Foliage Wall Panel,art
                                     wood bases designed for creating custom artificial floral arrangements."
 BAG AGWP 47,242.jpg,Premium Artificial Vertical Garden Panel,artificial-green-wall-panel,"A sharply trimmed,
                                     eco-friendly dried palm leaf spear that adds a modern architectural touch to decor."
-BAG AF 19,243.jpg,Faux Cordyline Bush Evergreen Foliage Stem,artificial-leaves,"A large-scale natural dried
+BAG AL 7,243.jpg,Faux Cordyline Bush Evergreen Foliage Stem,artificial-leaves,"A large-scale natural dried
                                     palm fan featuring a robust stem and wide, textured leaf surface."
-BAG AP 22,244.jpg,Faux Sansevieria / Artificial Snake Plant Bush,artificial-plants,"Elegantly hand-cut dried palm
+BAG AP 21,244.jpg,Faux Sansevieria / Artificial Snake Plant Bush,artificial-plants,"Elegantly hand-cut dried palm
                                     spear with a slender profile, perfect for minimalist vase styling."
-BAG AL 5,245.jpg,Artificial Croton Tropical Leaf Bunches,artificial-leaves,"A collection of lush,
+BAG AL 8,245.jpg,Artificial Croton Tropical Leaf Bunches,artificial-leaves,"A collection of lush,
                                     feathered dried cycas leaves in a muted natural green for tropical styling."
-BAG AF 20,246.jpg,Long Variegated Artificial Pandanus Greenery Stems,artificial-leaves,"Soft and airy bleached white
+BAG AL 9,246.jpg,Long Variegated Artificial Pandanus Greenery Stems,artificial-leaves,"Soft and airy bleached white
                                     pampas grass plumes that provide a delicate, bohemian aesthetic to any space."
-BAG TGH 35,247.jpg,White Artificial Bodhi Leaf Garland,event-decor,"A dense bunch of preserved
+BAG ED 13,247.jpg,White Artificial Bodhi Leaf Garland,event-decor,"A dense bunch of preserved
                                     white Gypsophila flowers ideal for ethereal and romantic floral designs."
-BAG AL 6,248.jpg,Artificial Rose Leaf Sprays / Faux Foliage Bunches,artificial-leaves,"A curated assortment of
+BAG AL 10,248.jpg,Artificial Rose Leaf Sprays / Faux Foliage Bunches,artificial-leaves,"A curated assortment of
                                     various natural dried grasses and seed pods for textured floral displays."
-BAG AF 21,249.jpg,Multi-Color Artificial Chrysanthemum Flower Heads,artificial-flowers,"A high-volume, fluffy natural
+BAG AF 18,249.jpg,Multi-Color Artificial Chrysanthemum Flower Heads,artificial-flowers,"A high-volume, fluffy natural
                                     pampas grass stalk featuring a sturdy reed and voluminous feathery head."
-BAG AF 22,250.jpg,Glittery Red Artificial Rose Flower Heads,artificial-flowers,"A handcrafted open-weave
+BAG AF 19,250.jpg,Glittery Red Artificial Rose Flower Heads,artificial-flowers,"A handcrafted open-weave
                                     rattan sphere designed for rustic tabletop decor or DIY lighting projects."
-BAG AF 23,251.jpg,Fluffy Multi-Color Artificial Carnation Flower Heads,artificial-flowers,"Handcrafted spherical sola
+BAG AF 20,251.jpg,Fluffy Multi-Color Artificial Carnation Flower Heads,artificial-flowers,"Handcrafted spherical sola
                                     wood bases designed for creating custom artificial floral arrangements."
-BAG AF 24,252.jpg,Assorted Multi-Color Artificial Open Rose Flower Heads,artificial-flowers,"A sharply trimmed,
+BAG AF 21,252.jpg,Assorted Multi-Color Artificial Open Rose Flower Heads,artificial-flowers,"A sharply trimmed,
                                     eco-friendly dried palm leaf spear that adds a modern architectural touch to decor."
-BAG AF 25,253.jpg,Multi-Color Artificial Dahlia Flower Heads,artificial-flowers,"A large-scale natural dried
+BAG AF 22,253.jpg,Multi-Color Artificial Dahlia Flower Heads,artificial-flowers,"A large-scale natural dried
                                     palm fan featuring a robust stem and wide, textured leaf surface."
-BAG AF 26,254.jpg,Assorted Multi-Color Artificial Rose Flower Heads,artificial-flowers,"Elegantly hand-cut dried palm
+BAG AF 23,254.jpg,Assorted Multi-Color Artificial Rose Flower Heads,artificial-flowers,"Elegantly hand-cut dried palm
                                     spear with a slender profile, perfect for minimalist vase styling."
-BAG AF 27,255.jpg,Classic Red Artificial Rose Flower Heads,artificial-flowers,"A collection of lush,
+BAG AF 24,255.jpg,Classic Red Artificial Rose Flower Heads,artificial-flowers,"A collection of lush,
                                     feathered dried cycas leaves in a muted natural green for tropical styling."
-BAG AF 28,256.jpg,Artificial Silk Rose Flower Heads,artificial-flowers,"Soft and airy bleached white
+BAG AF 25,256.jpg,Artificial Silk Rose Flower Heads,artificial-flowers,"Soft and airy bleached white
                                     pampas grass plumes that provide a delicate, bohemian aesthetic to any space."
 BAG AGWP 48,257.jpg,Large Red Artificial Rose Flower Wall Panel,artificial-green-wall-panel,"A dense bunch of preserved
                                     white Gypsophila flowers ideal for ethereal and romantic floral designs."
@@ -541,86 +541,86 @@ BAG AGWP 53,262.jpg,Solid Medium Pink Artificial Rose Flower Wall Panel,artifici
                                     eco-friendly dried palm leaf spear that adds a modern architectural touch to decor."
 BAG AGWP 54,263.jpg,Red Artificial Silk Rose Flower Wall Panel,artificial-green-wall-panel,"A large-scale natural dried
                                     palm fan featuring a robust stem and wide, textured leaf surface."
-BAG AFL 3,264.jpg,Hanging Pink Artificial Wisteria Flower Bunches,artificial-flora,"Elegantly hand-cut dried palm
+BAG AFL 4,264.jpg,Hanging Pink Artificial Wisteria Flower Bunches,artificial-flora,"Elegantly hand-cut dried palm
                                     spear with a slender profile, perfect for minimalist vase styling."
-BAG AFL 4,265.jpg,Hanging Purple Artificial Wisteria Flower Bunches,artificial-flora,"A collection of lush,
+BAG AFL 5,265.jpg,Hanging Purple Artificial Wisteria Flower Bunches,artificial-flora,"A collection of lush,
                                     feathered dried cycas leaves in a muted natural green for tropical styling."
-BAG TGH 36,266.jpg,Hanging Artificial Wisteria Garland Bunches,artificial-flora,"Soft and airy bleached white
+BAG AFL 6,266.jpg,Hanging Artificial Wisteria Garland Bunches,artificial-flora,"Soft and airy bleached white
                                     pampas grass plumes that provide a delicate, bohemian aesthetic to any space."
-BAG TGH 37,267.jpg,Long Hanging Yellow Artificial Orchid Flower Garlands,artificial-flora,"A dense bunch of preserved
+BAG AFL 7,267.jpg,Long Hanging Yellow Artificial Orchid Flower Garlands,artificial-flora,"A dense bunch of preserved
                                     white Gypsophila flowers ideal for ethereal and romantic floral designs."
-BAG AFL 5,268.jpg,Large Hanging Red Artificial Wisteria Arrangement,artificial-flora,"A curated assortment of
+BAG AFL 8,268.jpg,Large Hanging Red Artificial Wisteria Arrangement,artificial-flora,"A curated assortment of
                                     various natural dried grasses and seed pods for textured floral displays."
-BAG AF 29,269.jpg,Multi-Color Hanging Artificial Wisteria Flowers,artificial-flora,"A high-volume, fluffy natural
+BAG AFL 9,269.jpg,Multi-Color Hanging Artificial Wisteria Flowers,artificial-flora,"A high-volume, fluffy natural
                                     pampas grass stalk featuring a sturdy reed and voluminous feathery head."
-BAG AFL 6,270.jpg,Large Hanging Golden Yellow Wisteria Arrangement,artificial-flora,"A handcrafted open-weave
+BAG AFL 10,270.jpg,Large Hanging Golden Yellow Wisteria Arrangement,artificial-flora,"A handcrafted open-weave
                                     rattan sphere designed for rustic tabletop decor or DIY lighting projects."
-BAG AFL 7,271.jpg,Hanging Lavender Purple Artificial Wisteria Bunches,artificial-flora,"Handcrafted spherical sola
+BAG AFL 11,271.jpg,Hanging Lavender Purple Artificial Wisteria Bunches,artificial-flora,"Handcrafted spherical sola
                                     wood bases designed for creating custom artificial floral arrangements."
-BAG AFL 8,272.jpg,Hanging Cyan Blue Artificial Wisteria Flower Bunches,artificial-flora,"A sharply trimmed,
+BAG AFL 12,272.jpg,Hanging Cyan Blue Artificial Wisteria Flower Bunches,artificial-flora,"A sharply trimmed,
                                     eco-friendly dried palm leaf spear that adds a modern architectural touch to decor."
-BAG AFL 9,273.jpg,Hanging Cream Champagne Artificial Wisteria Bunches,artificial-flora,"A large-scale natural dried
+BAG AFL 13,273.jpg,Hanging Cream Champagne Artificial Wisteria Bunches,artificial-flora,"A large-scale natural dried
                                     palm fan featuring a robust stem and wide, textured leaf surface."
-BAG AFL 10,274.jpg,Hanging Soft Pink Artificial Wisteria Flower Bunches,artificial-flora,"Elegantly hand-cut dried palm
+BAG AFL 14,274.jpg,Hanging Soft Pink Artificial Wisteria Flower Bunches,artificial-flora,"Elegantly hand-cut dried palm
                                     spear with a slender profile, perfect for minimalist vase styling."
-BAG AFL 11,275.jpg,Hanging Violet Magenta Artificial Wisteria Flower Bunches,artificial-flora,"A collection of lush,
+BAG AFL 15,275.jpg,Hanging Violet Magenta Artificial Wisteria Flower Bunches,artificial-flora,"A collection of lush,
                                     feathered dried cycas leaves in a muted natural green for tropical styling."
-BAG AFL 12,276.jpg,Hanging Deep Coral Pink Artificial Wisteria Bunches,artificial-flora,"Soft and airy bleached white
+BAG AFL 16,276.jpg,Hanging Deep Coral Pink Artificial Wisteria Bunches,artificial-flora,"Soft and airy bleached white
                                     pampas grass plumes that provide a delicate, bohemian aesthetic to any space."
-BAG AFL 13,277.jpg,Hanging Lime Green Artificial Wisteria Flower Bunches,artificial-flora,"A dense bunch of preserved
+BAG AFL 17,277.jpg,Hanging Lime Green Artificial Wisteria Flower Bunches,artificial-flora,"A dense bunch of preserved
                                     white Gypsophila flowers ideal for ethereal and romantic floral designs."
-BAG AFL 14,278.jpg,Hanging Royal Purple Artificial Wisteria Flower Bunches,artificial-flora,"A curated assortment of
+BAG AFL 18,278.jpg,Hanging Royal Purple Artificial Wisteria Flower Bunches,artificial-flora,"A curated assortment of
                                     various natural dried grasses and seed pods for textured floral displays."
-BAG AFL 15,279.jpg,Hanging Off-White Artificial Wisteria Flower Bunches,artificial-flora,"A high-volume, fluffy natural
+BAG AFL 19,279.jpg,Hanging Off-White Artificial Wisteria Flower Bunches,artificial-flora,"A high-volume, fluffy natural
                                     pampas grass stalk featuring a sturdy reed and voluminous feathery head."
-BAG TGH 38,280.jpg,Artificial Yellow Marigold and White Jasmine Toran,traditional-garlands,"A handcrafted open-weave
+BAG TGH 35,280.jpg,Artificial Yellow Marigold and White Jasmine Toran,traditional-garlands,"A handcrafted open-weave
                                     rattan sphere designed for rustic tabletop decor or DIY lighting projects."
-BAG TGH 39,281.jpg,Artificial Marigold and Jasmine Festoon Door Hanging,traditional-garlands,"Handcrafted spherical sola
+BAG TGH 36,281.jpg,Artificial Marigold and Jasmine Festoon Door Hanging,traditional-garlands,"Handcrafted spherical sola
                                     wood bases designed for creating custom artificial floral arrangements."
-BAG TGH 40,282.jpg,Loose Artificial Orange and Yellow Marigold Flowers,traditional-garlands,"A sharply trimmed,
+BAG TGH 37,282.jpg,Loose Artificial Orange and Yellow Marigold Flowers,traditional-garlands,"A sharply trimmed,
                                     eco-friendly dried palm leaf spear that adds a modern architectural touch to decor."
-BAG TGH 41,283.jpg,Artificial Marigold and Jasmine Door Toran Garland,traditional-garlands,"A large-scale natural dried
+BAG TGH 38,283.jpg,Artificial Marigold and Jasmine Door Toran Garland,traditional-garlands,"A large-scale natural dried
                                     palm fan featuring a robust stem and wide, textured leaf surface."
-BAG TGH 42,284.jpg,Thick Artificial Marigold Flower Garland,traditional-garlands,"Elegantly hand-cut dried palm
+BAG TGH 39,284.jpg,Thick Artificial Marigold Flower Garland,traditional-garlands,"Elegantly hand-cut dried palm
                                     spear with a slender profile, perfect for minimalist vase styling."
-BAG TGH 43,285.jpg,Artificial Yellow Marigold and Red Jasmine Toran,traditional-garlands,"A collection of lush,
+BAG TGH 40,285.jpg,Artificial Yellow Marigold and Red Jasmine Toran,traditional-garlands,"A collection of lush,
                                     feathered dried cycas leaves in a muted natural green for tropical styling."
-BAG TGH 44,286.jpg,Layered Artificial Yellow Marigold Garland Backdrop,traditional-garlands,"Soft and airy bleached white
+BAG TGH 41,286.jpg,Layered Artificial Yellow Marigold Garland Backdrop,traditional-garlands,"Soft and airy bleached white
                                     pampas grass plumes that provide a delicate, bohemian aesthetic to any space."
-BAG TGH 45,287.jpg,Artificial Marigold Festive Door Hanging Toran,traditional-garlands,"A dense bunch of preserved
+BAG TGH 42,287.jpg,Artificial Marigold Festive Door Hanging Toran,traditional-garlands,"A dense bunch of preserved
                                     white Gypsophila flowers ideal for ethereal and romantic floral designs."
 BAG AFR 1,288.jpg,Bulk Pack of Colorful Artificial Faux Fruits,artificial-fruits,"A curated assortment of
                                     various natural dried grasses and seed pods for textured floral displays."
 BAG AFR 2,289.jpg,Hanging Artificial Fruit Garlands / Strings,artificial-fruits,"A high-volume, fluffy natural
                                     pampas grass stalk featuring a sturdy reed and voluminous feathery head."
-BAG AFL 16,290.jpg,Hanging Artificial White Gypsophila Vine Garlands,artificial-flora,"A handcrafted open-weave
+BAG AFL 20,290.jpg,Hanging Artificial White Gypsophila Vine Garlands,artificial-flora,"A handcrafted open-weave
                                     rattan sphere designed for rustic tabletop decor or DIY lighting projects."
-BAG AFL 17,291.jpg,Long Hanging Artificial White Baby's Breath Garlands,artificial-flora,"Handcrafted spherical sola
+BAG AFL 21,291.jpg,Long Hanging Artificial White Baby's Breath Garlands,artificial-flora,"Handcrafted spherical sola
                                     wood bases designed for creating custom artificial floral arrangements."
-BAG FA 2,292.jpg,Large Artificial Floral Arrangement with Orchids,floral-arrangements,"A sharply trimmed,
+BAG FA 8,292.jpg,Large Artificial Floral Arrangement with Orchids,floral-arrangements,"A sharply trimmed,
                                     eco-friendly dried palm leaf spear that adds a modern architectural touch to decor."
-BAG FA 3,293.jpg,Premium Artificial Tropical Floor Vase Arrangement,floral-arrangements,"A large-scale natural dried
+BAG FA 9,293.jpg,Premium Artificial Tropical Floor Vase Arrangement,floral-arrangements,"A large-scale natural dried
                                     palm fan featuring a robust stem and wide, textured leaf surface."
-BAG AFL 18,294.jpg,Hanging Artificial Rosemary Greenery Bush,artificial-flora,"Elegantly hand-cut dried palm
+BAG AFL 22,294.jpg,Hanging Artificial Rosemary Greenery Bush,artificial-flora,"Elegantly hand-cut dried palm
                                     spear with a slender profile, perfect for minimalist vase styling."
-BAG AFL 19,295.jpg,Hanging Artificial Weeping Wisteria Bush Garlands,artificial-flora,"A collection of lush,
+BAG AFL 23,295.jpg,Hanging Artificial Weeping Wisteria Bush Garlands,artificial-flora,"A collection of lush,
                                     feathered dried cycas leaves in a muted natural green for tropical styling."
-BAG AFL 20,296.jpg,Large Hanging Artificial Willow Greenery Vine Bush,artificial-flora,"Soft and airy bleached white
+BAG AFL 24,296.jpg,Large Hanging Artificial Willow Greenery Vine Bush,artificial-flora,"Soft and airy bleached white
                                     pampas grass plumes that provide a delicate, bohemian aesthetic to any space."
-BAG AFL 21,297.jpg,Hanging Artificial Boxwood and Eucalyptus Garlands,artificial-flora,"A dense bunch of preserved
+BAG AFL 25,297.jpg,Hanging Artificial Boxwood and Eucalyptus Garlands,artificial-flora,"A dense bunch of preserved
                                     white Gypsophila flowers ideal for ethereal and romantic floral designs."
-BAG AFL 22,298.jpg,Assorted Hanging Artificial Leaf Garlands,artificial-flora,"A curated assortment of
+BAG AFL 26,298.jpg,Assorted Hanging Artificial Leaf Garlands,artificial-flora,"A curated assortment of
                                     various natural dried grasses and seed pods for textured floral displays."
-BAG TGH 46,299.jpg,Hanging Artificial Ivy and Variegated Pothos Garlands,artificial-flora,"A high-volume, fluffy natural
+BAG AFL 27,299.jpg,Hanging Artificial Ivy and Variegated Pothos Garlands,artificial-flora,"A high-volume, fluffy natural
                                     pampas grass stalk featuring a sturdy reed and voluminous feathery head."
-BAG AFL 23,300.jpg,Long Hanging Artificial Amaranthus String Garlands,artificial-flora,"A handcrafted open-weave
+BAG AFL 28,300.jpg,Long Hanging Artificial Amaranthus String Garlands,artificial-flora,"A handcrafted open-weave
                                     rattan sphere designed for rustic tabletop decor or DIY lighting projects."
-BAG AFL 24,301.jpg,Hanging Artificial Weeping Wisteria Bush Garlands,artificial-flora,"Lush, realistic cascading
+BAG AFL 29,301.jpg,Hanging Artificial Weeping Wisteria Bush Garlands,artificial-flora,"Lush, realistic cascading
                                     white wisteria spray designed to add elegant vertical floral elements to event
                                     ceilings and arches."
-BAG TGH 47,302.jpg,Long Hanging Artificial Weeping Eucalyptus Garlands,artificial-flora,"Highly realistic trailing ivy
+BAG AFL 30,302.jpg,Long Hanging Artificial Weeping Eucalyptus Garlands,artificial-flora,"Highly realistic trailing ivy
                                     foliage spray, ideal for creating draping greenery walls, arches, and hanging
                                     installations."
-BAG AFL 25,303.jpg,Premium Hanging Artificial Fern and Astilbe Garlands,artificial-flora,"Vibrant, multi-strand
+BAG AFL 31,303.jpg,Premium Hanging Artificial Fern and Astilbe Garlands,artificial-flora,"Vibrant, multi-strand
                                     artificial green willow hanging creeper, perfect for natural backdrops and wedding
                                     foliage decorations."
