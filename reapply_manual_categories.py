@@ -97,8 +97,41 @@ manual_moves["BAG 86"] = "event-decor"
 manual_moves["BAG 118"] = "artificial-flora"
 manual_moves["BAG 282"] = "traditional-garlands"
 
-# 19. New moves requested at 11:22 PM
+# 19. New moves requested at 11:51 PM
 manual_moves["BAG 289"] = "artificial-fruits"
+
+# 20. New moves requested at 11:57 PM
+manual_moves["BAG 243"] = "artificial-leaves"
+manual_moves["BAG 246"] = "artificial-leaves"
+
+# 21. New moves requested at 12:01 AM
+manual_moves["BAG 145"] = "artificial-flora"
+manual_moves["BAG 269"] = "artificial-flora"
+
+# 22. New moves requested at 12:04 AM
+manual_moves["BAG 247"] = "event-decor"
+
+# 23. New moves requested at 12:06 AM
+manual_moves["BAG 266"] = "artificial-flora"
+manual_moves["BAG 267"] = "artificial-flora"
+
+# 24. New moves requested at 12:10 AM
+manual_moves["BAG 299"] = "artificial-flora"
+manual_moves["BAG 302"] = "artificial-flora"
+
+# 25. New moves requested at 12:13 AM
+manual_moves["BAG 139"] = "artificial-leaves"
+
+# 26. New moves requested at 12:17 AM
+manual_moves["BAG 54"] = "artificial-leaves"
+
+# 27. New moves requested at 12:21 AM
+manual_moves["BAG 2"] = "floral-arrangements"
+manual_moves["BAG 3"] = "floral-arrangements"
+manual_moves["BAG 4"] = "floral-arrangements"
+manual_moves["BAG 5"] = "floral-arrangements"
+manual_moves["BAG 6"] = "floral-arrangements"
+manual_moves["BAG 7"] = "floral-arrangements"
 
 categories_display_names = {
     "artificial-flowers": "Artificial Flowers",
@@ -127,9 +160,11 @@ for csv_file in [csv_path1, csv_path2]:
         fieldnames = reader.fieldnames
         
     for row in rows:
-        pid = row['Product ID']
-        if pid in manual_moves:
-            row['Category'] = manual_moves[pid]
+        img_filename = row['Image Filename']
+        img_num = img_filename.replace('.jpg', '')
+        bag_id = f"BAG {img_num}"
+        if bag_id in manual_moves:
+            row['Category'] = manual_moves[bag_id]
             
     with open(csv_file, 'w', encoding='utf-8', newline='') as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
@@ -144,9 +179,11 @@ with open(product_html_path, 'r', encoding='utf-8') as f:
 # Define replacement card mapping
 def update_card(match):
     card = match.group(0)
-    bag_match = re.search(r'BAG\s+(\d+)', card)
-    if bag_match:
-        bag_id = f"BAG {bag_match.group(1)}"
+    # Match using the image filename since it uniquely represents the original BAG ID
+    img_match = re.search(r'src="assets/images/products/(\d+)\.jpg"', card)
+    if img_match:
+        img_num = img_match.group(1)
+        bag_id = f"BAG {img_num}"
         if bag_id in manual_moves:
             slug = manual_moves[bag_id]
             display_name = categories_display_names.get(slug, slug.replace("-", " ").title())
