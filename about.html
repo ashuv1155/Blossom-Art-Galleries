@@ -4,7 +4,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us - Blossom Art Galleries</title>
+  
+  <!-- Primary SEO Meta Tags -->
+  <title>About Blossom Art Galleries — Global Wholesale Artificial Flora Supplier</title>
+  <meta name="description" content="Discover Blossom Art Galleries, India's leading wholesale exporter of high-quality, premium lifelike artificial flowers, wall panels, and custom flora arrangements.">
+  <meta name="keywords" content="about blossom art galleries, wholesale artificial flowers India, artificial flora supplier Mumbai, high quality artificial plants bulk, wholesale floral exporter">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://blossomartgalleries.com/about.html">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://blossomartgalleries.com/about.html">
+  <meta property="og:title" content="About Blossom Art Galleries — Global Wholesale Artificial Flora Supplier">
+  <meta property="og:description" content="Discover Blossom Art Galleries, India's leading wholesale exporter of high-quality, premium lifelike artificial flowers, wall panels, and custom flora arrangements.">
+  <meta property="og:image" content="https://blossomartgalleries.com/assets/images/hero_new.png">
+  <meta property="og:site_name" content="Blossom Art Galleries">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://blossomartgalleries.com/about.html">
+  <meta name="twitter:title" content="About Blossom Art Galleries — Global Wholesale Artificial Flora Supplier">
+  <meta name="twitter:description" content="Discover Blossom Art Galleries, India's leading wholesale exporter of high-quality, premium lifelike artificial flowers, wall panels, and custom flora arrangements.">
+  <meta name="twitter:image" content="https://blossomartgalleries.com/assets/images/hero_new.png">
+
   <!-- Tailwind CSS (Production build) -->
   <link rel="stylesheet" href="tailwind.css">
   <link rel="stylesheet" href="style.css">
@@ -13,6 +35,28 @@
       filter: blur(4px);
     }
   </style>
+
+  <!-- Structured Data (JSON-LD BreadcrumbList Schema) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://blossomartgalleries.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "About Us",
+        "item": "https://blossomartgalleries.com/about.html"
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body class="font-sans antialiased bg-white text-gray-900 flex flex-col min-h-screen overflow-x-hidden">
@@ -148,13 +192,13 @@
     <!-- Page Header -->
     <div class="relative bg-zinc-950 text-white py-32 overflow-hidden">
       <div class="absolute inset-0 opacity-25">
-        <img src="assets/images/flower-bunches.png" alt="" class="w-full h-full object-cover blur-sm scale-110">
+        <img src="assets/images/flower-bunches.png" alt="Premium wholesale artificial flower bunches background" class="w-full h-full object-cover blur-sm scale-110" loading="lazy">
       </div>
       <div class="absolute inset-0 bg-gradient-to-b from-zinc-950/70 to-zinc-950/96"></div>
       <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(192,57,43,0.15),transparent_70%)]"></div>
       <div class="container mx-auto px-4 text-center relative z-10 animate-fade-in-up">
         <p class="text-[0.65rem] uppercase tracking-[0.55em] text-white/40 mb-4 font-medium">Our Story</p>
-        <h1 class="text-5xl md:text-7xl font-serif font-bold mb-6">About Us</h1>
+        <h1 class="text-5xl md:text-7xl font-serif font-bold mb-6">About Blossom Art Galleries</h1>
         <div class="flex items-center justify-center gap-2 text-sm text-white/35 uppercase tracking-wider font-medium">
           <a href="index.html" class="hover:text-white transition-colors">Home</a>
           <span>/</span>
@@ -399,11 +443,15 @@
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/lucide@0.453.0/dist/umd/lucide.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.453.0/dist/umd/lucide.min.js" defer></script>
   <script>
-    lucide.createIcons();
+    document.addEventListener("DOMContentLoaded", () => {
+        if (window.lucide) {
+            lucide.createIcons();
+        }
+    });
   </script>
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 
   <!-- Custom Script for Animated Counter -->
   <script>

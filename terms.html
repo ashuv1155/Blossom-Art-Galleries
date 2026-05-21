@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms of Use - Blossom Art Galleries</title>
+    <title>Terms of Use — Blossom Art Galleries</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://blossomartgalleries.com/terms.html">
     <link rel="stylesheet" href="tailwind.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -119,7 +121,13 @@
         </a>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/lucide@0.453.0/dist/umd/lucide.min.js"></script>
-    <script>lucide.createIcons();</script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.453.0/dist/umd/lucide.min.js" defer></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+        });
+    </script>
 </body>
 </html>
