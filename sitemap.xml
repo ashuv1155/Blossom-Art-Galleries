@@ -60,4 +60,40 @@
         <changefreq>monthly</changefreq>
         <priority>0.3</priority>
     </url>
+    <url>
+        <loc>https://blossomartgalleries.com/blog.html</loc>
+        <lastmod>2026-05-22</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://blossomartgalleries.com/blog-traditional-garlands-wholesale.html</loc>
+        <lastmod>2026-05-22</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://blossomartgalleries.com/blog-wedding-mandaps-flower-panels.html</loc>
+        <lastmod>2026-05-22</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://blossomartgalleries.com/blog-commercial-interiors-faux-plants.html</loc>
+        <lastmod>2026-05-22</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://blossomartgalleries.com/blog-wholesale-artificial-flowers-mumbai.html</loc>
+        <lastmod>2026-05-22</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://blossomartgalleries.com/blog-retailers-guide-silk-flower-care.html</loc>
+        <lastmod>2026-05-22</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
 </urlset>
