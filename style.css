@@ -386,5 +386,150 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* ==========================================================================
+   🌸 DESKTOP RESPONSIVE GRID UTILITIES & Polish Styles
+   ========================================================================== */
+@media (min-width: 1024px) {
+  .lg\:grid-cols-12 {
+    display: grid !important;
+    grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+  }
+  .lg\:col-span-7 {
+    grid-column: span 7 / span 7 !important;
+  }
+  .lg\:col-span-5 {
+    grid-column: span 5 / span 5 !important;
+  }
+  .lg\:col-span-8 {
+    grid-column: span 8 / span 8 !important;
+  }
+  .lg\:col-span-4 {
+    grid-column: span 4 / span 4 !important;
+  }
+  .lg\:grid-cols-3 {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+  .lg\:sticky {
+    position: sticky !important;
+  }
+  .lg\:top-24 {
+    top: 6rem !important;
+  }
+}
 
+/* Expert Bio & Related Articles Visual Enhancements */
+.expert-bio-card {
+  background: #ffffff;
+  border: 1px solid rgba(42, 10, 7, 0.04);
+  border-radius: 24px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 30px -15px rgba(42, 10, 7, 0.02);
+  transition: all 0.3s ease;
+}
 
+.expert-bio-card:hover {
+  border-color: rgba(192, 57, 43, 0.1);
+  box-shadow: 0 15px 35px -10px rgba(192, 57, 43, 0.05);
+}
+
+.related-articles-section {
+  border-top: 1px solid rgba(42, 10, 7, 0.06);
+  padding-top: 4.5rem;
+  margin-top: 4rem;
+}
+
+.related-article-card {
+  background: #ffffff;
+  border: 1px solid rgba(42, 10, 7, 0.04);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px -15px rgba(42, 10, 7, 0.02);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.related-article-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(192, 57, 43, 0.12);
+  box-shadow: 0 20px 40px -15px rgba(192, 57, 43, 0.06);
+}
+
+/* ==========================================================================
+   🛠️ CUSTOM UTILITY BACKFILLS FOR MISSING TAILWIND STYLES IN BLOGS
+   ========================================================================== */
+
+.w-16 {
+  width: 4rem !important; /* 64px */
+}
+
+.h-16 {
+  height: 4rem !important; /* 64px */
+}
+
+.w-20 {
+  width: 5rem !important; /* 80px */
+}
+
+.h-1 {
+  height: 0.25rem !important; /* 4px */
+}
+
+.w-\[320px\] {
+  width: 320px !important;
+}
+
+.h-48 {
+  height: 12rem !important; /* 192px */
+}
+
+@media (min-width: 640px) {
+  .sm\:w-1\/3 {
+    width: 33.333333% !important;
+  }
+  .sm\:h-auto {
+    height: auto !important;
+  }
+}
+
+.max-w-4xl {
+  max-width: 56rem !important; /* 896px */
+}
+
+.max-w-6xl {
+  max-width: 72rem !important; /* 1152px */
+}
+
+.max-w-xl {
+  max-width: 36rem !important; /* 576px */
+}
+
+.max-w-none {
+  max-width: none !important;
+}
+
+.rounded-3xl {
+  border-radius: 1.5rem !important; /* 24px */
+}
+
+.gap-12 {
+  gap: 3rem !important; /* 48px */
+}
+
+/* space-y backfills */
+.space-y-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1rem * (1 - var(--tw-space-y-reverse))) !important;
+  margin-bottom: calc(1rem * var(--tw-space-y-reverse)) !important;
+}
+
+.space-y-6 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.5rem * (1 - var(--tw-space-y-reverse))) !important;
+  margin-bottom: calc(1.5rem * var(--tw-space-y-reverse)) !important;
+}
+
+.space-y-8 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(2rem * (1 - var(--tw-space-y-reverse))) !important;
+  margin-bottom: calc(2rem * var(--tw-space-y-reverse)) !important;
+}
