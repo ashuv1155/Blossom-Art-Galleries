@@ -259,14 +259,22 @@
 
                             <div id="gh-fields" style="display:none;margin-top:16px;border-top:1px solid #e0e0e0;padding-top:16px;display:none;flex-direction:column;gap:10px;">
                                 <div>
-                                    <label style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#666;display:block;margin-bottom:4px;">Repository (username/repo)</label>
-                                    <input type="text" id="gh-repo" placeholder="ashuv1155/Blossom-Art-Galleries"
-                                        style="width:100%;box-sizing:border-box;background:#fff;border:1px solid #ddd;border-radius:8px;padding:9px 12px;font-size:12px;outline:none;color:#111;">
+                                    <label style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#666;display:block;margin-bottom:4px;">Repository (username/repo) <span style="color:#15803d;font-size:9px;">🔒 Fixed</span></label>
+                                    <div style="position:relative;">
+                                        <input type="text" id="gh-repo" readonly
+                                            style="width:100%;box-sizing:border-box;background:#f4f4f2;border:1px solid #e0e0e0;border-radius:8px;padding:9px 12px 9px 34px;font-size:12px;outline:none;color:#555;cursor:not-allowed;user-select:none;"
+                                            onkeydown="return false;" onpaste="return false;" oncut="return false;">
+                                        <span style="position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:14px;pointer-events:none;">🔒</span>
+                                    </div>
                                 </div>
                                 <div>
-                                    <label style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#666;display:block;margin-bottom:4px;">Personal Access Token</label>
-                                    <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"
-                                        style="width:100%;box-sizing:border-box;background:#fff;border:1px solid #ddd;border-radius:8px;padding:9px 12px;font-size:12px;outline:none;color:#111;">
+                                    <label style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#666;display:block;margin-bottom:4px;">Personal Access Token <span style="color:#15803d;font-size:9px;">🔒 Fixed</span></label>
+                                    <div style="position:relative;">
+                                        <input type="password" id="gh-token" readonly
+                                            style="width:100%;box-sizing:border-box;background:#f4f4f2;border:1px solid #e0e0e0;border-radius:8px;padding:9px 12px 9px 34px;font-size:12px;outline:none;color:#555;cursor:not-allowed;user-select:none;"
+                                            onkeydown="return false;" onpaste="return false;" oncut="return false;">
+                                        <span style="position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:14px;pointer-events:none;">🔒</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -455,12 +463,9 @@
                 showDashboard();
             }
 
-            // Restore GH settings
-            // Restore GH settings
-            const savedRepo = localStorage.getItem("ba_gh_repo") || DEFAULT_GITHUB_REPO;
-            const savedToken = localStorage.getItem("ba_gh_token") || DEFAULT_GITHUB_TOKEN;
-            document.getElementById("gh-repo").value = savedRepo;
-            document.getElementById("gh-token").value = savedToken;
+            // Set permanently locked GH settings
+            document.getElementById("gh-repo").value = DEFAULT_GITHUB_REPO;
+            document.getElementById("gh-token").value = DEFAULT_GITHUB_TOKEN;
 
             const ghToggleState = localStorage.getItem("ba_gh_on");
             if (ghToggleState === null || ghToggleState === "1") {
@@ -835,8 +840,6 @@
                 if (isLocalServer && !ghOn) {
                     doLocalServerPublish(cat, name, desc);
                 } else if (ghOn) {
-                    localStorage.setItem("ba_gh_repo", ghRepo);
-                    localStorage.setItem("ba_gh_token", ghToken);
                     doGithubSync(cat, name, desc, ghRepo, ghToken);
                 } else {
                     doLocalDownload(cat, name, desc);
