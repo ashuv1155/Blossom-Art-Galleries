@@ -334,7 +334,8 @@ const PRODUCTS_DATA = [
     "category": "artificial-flowers",
     "image": "assets/images/products/42.webp",
     "alt": "Triple-Head Artificial Sunflower Faux Stem",
-    "description": "A realistic silk sunflower branch featuring three graduated yellow blossom heads and green leaves."
+    "description": "A realistic silk sunflower branch featuring three graduated yellow blossom heads and green leaves.",
+    "unlisted": true
   },
   {
     "id": "BAG AF 2",
