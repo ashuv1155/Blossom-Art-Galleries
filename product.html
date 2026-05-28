@@ -355,7 +355,7 @@
             </div>
             <div
                 class="pt-8 border-t border-zinc-900 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-700">
-                <p>Copyright © 2020 Blossom Art Galleries.</p>
+                <p>Copyright © 2020 Blossom Art Galleries. <a href="admin.html" class="hover:text-white transition-colors ml-1 opacity-30 hover:opacity-100">Portal</a></p>
                 <div class="flex items-center gap-4">
                     <span class="font-medium text-gray-700">Visa</span>
                     <span class="font-medium text-gray-700">Mastercard</span>
@@ -385,6 +385,37 @@
     <!-- Script to handle filtering products via query parameter and live search -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Load products from localStorage or fall back to PRODUCTS_DATA
+            let localData = null;
+            try {
+                localData = localStorage.getItem("PRODUCTS_DATA");
+            } catch(e) {
+                console.warn("localStorage read blocked:", e);
+            }
+            
+            let activeProducts = typeof PRODUCTS_DATA !== 'undefined' ? PRODUCTS_DATA : [];
+            
+            if (localData) {
+                try {
+                    activeProducts = JSON.parse(localData);
+                    // Self-healing: if the array was saved empty by mistake, restore defaults
+                    if ((!activeProducts || activeProducts.length === 0) && typeof PRODUCTS_DATA !== 'undefined' && PRODUCTS_DATA.length > 0) {
+                        activeProducts = PRODUCTS_DATA;
+                        try {
+                            localStorage.setItem("PRODUCTS_DATA", JSON.stringify(activeProducts));
+                        } catch(e) {}
+                    }
+                } catch(e) {
+                    console.error("Error parsing PRODUCTS_DATA from localStorage", e);
+                }
+            } else {
+                try {
+                    localStorage.setItem("PRODUCTS_DATA", JSON.stringify(activeProducts));
+                } catch(e) {}
+            }
+            // Filter out unlisted products for public catalog
+            window.PRODUCTS_DATA = activeProducts.filter(p => !p.unlisted);
+
             const urlParams = new URLSearchParams(window.location.search);
             const activeCategory = urlParams.get('category') || 'all';
             const initialSearch = urlParams.get('search') || '';
@@ -532,7 +563,7 @@
             function filterProducts() {
                 const searchTerm = searchInput.value.toLowerCase().trim();
 
-                currentFilteredProducts = PRODUCTS_DATA.filter(item => {
+                currentFilteredProducts = (window.PRODUCTS_DATA || []).filter(item => {
                     const matchesCategory = activeCategory === 'all' || item.category === activeCategory;
                     const matchesSearch = item.name.toLowerCase().includes(searchTerm) || 
                                           item.id.toLowerCase().includes(searchTerm) || 

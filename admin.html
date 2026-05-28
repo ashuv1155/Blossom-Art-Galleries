@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Blossom Art Galleries</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="tailwind.css">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #0f0f0f 0%, #1f1214 50%, #0f0f0f 100%);
+        }
+        .dark-glass-card {
+            background: rgba(20, 10, 12, 0.95);
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.7);
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .fade-up { animation: fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) forwards; }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(12px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .slide-up { animation: slideUp 0.5s cubic-bezier(0.16,1,0.3,1) forwards; }
+
+        /* Toast */
+        @keyframes toastIn {
+            from { opacity: 0; transform: translateY(10px) scale(0.96); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .toast-anim { animation: toastIn 0.35s cubic-bezier(0.175,0.885,0.32,1.275) forwards; }
+
+        /* Dropzone hover border */
+        .dropzone-active { border-color: #c0392b !important; background: rgba(192,57,43,0.04); }
+
+        @media (min-width: 768px) {
+            .manage-controls {
+                grid-template-columns: 2fr 1fr 1fr !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="font-sans antialiased bg-[#fafaf8] text-gray-900 min-h-screen overflow-x-hidden">
+
+    <!-- ===================== LOCK SCREEN ===================== -->
+    <div id="lock-screen" style="position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;" class="gradient-bg">
+        <!-- Decorative glow — pointer-events-none so it never blocks clicks -->
+        <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center, rgba(192,57,43,0.13) 0%, transparent 70%);"></div>
+
+        <div style="width:100%;max-width:420px;padding:0 16px;position:relative;z-index:1;" class="fade-up">
+            <div class="dark-glass-card" style="border-radius:24px;padding:40px 36px;text-align:center;">
+
+                <!-- Branding -->
+                <div style="margin-bottom:28px;">
+                    <div style="font-family:Georgia,serif;font-size:1.35rem;font-weight:700;letter-spacing:0.18em;color:#fff;line-height:1;">Blossom Art</div>
+                    <div style="font-size:0.55rem;letter-spacing:0.45em;text-transform:uppercase;color:#6b6b6b;margin-top:6px;">Galleries</div>
+                    <div style="margin-top:14px;display:inline-block;padding:4px 14px;border:1px solid rgba(192,57,43,0.4);border-radius:999px;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#c0392b;font-weight:700;">Admin Panel</div>
+                </div>
+
+                <h2 style="font-family:Georgia,serif;font-size:1.2rem;color:#fff;font-weight:700;margin-bottom:8px;">Access Portal Locked</h2>
+                <p style="color:#888;font-size:12px;margin-bottom:28px;">Enter the admin passcode to continue.</p>
+
+                <!-- Passcode form -->
+                <form onsubmit="doUnlock(event)">
+                    <div style="position:relative;margin-bottom:16px;">
+                        <input
+                            type="password"
+                            id="passcode-input"
+                            placeholder="Admin Passcode"
+                            autocomplete="current-password"
+                            style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:14px 48px 14px 18px;color:#fff;font-size:14px;outline:none;transition:border 0.2s;"
+                            onfocus="this.style.borderColor='#c0392b';"
+                            onblur="this.style.borderColor='rgba(255,255,255,0.15)';"
+                        >
+                        <button
+                            type="button"
+                            onclick="toggleShowPw()"
+                            style="position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:#888;padding:4px;display:flex;align-items:center;"
+                            tabindex="-1"
+                            title="Show/Hide password">
+                            <svg id="pw-eye-icon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div id="lock-error" style="display:none;color:#e74c3c;font-size:12px;margin-bottom:12px;font-weight:600;">⚠️ Incorrect passcode. Please try again.</div>
+
+                    <button
+                        type="submit"
+                        style="width:100%;background:#c0392b;color:#fff;border:none;border-radius:12px;padding:15px;font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;transition:background 0.2s,transform 0.1s;"
+                        onmouseover="this.style.background='#a93226';"
+                        onmouseout="this.style.background='#c0392b';"
+                        onmousedown="this.style.transform='scale(0.98)';"
+                        onmouseup="this.style.transform='scale(1)';">
+                        Unlock Dashboard
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== DASHBOARD (hidden by default) ===================== -->
+    <div id="dashboard-wrap" style="display:none;flex-direction:column;min-height:100vh;">
+
+        <!-- Navbar -->
+        <header style="background:#fff;border-bottom:1px solid #f0f0f0;position:sticky;top:0;z-index:100;">
+            <div class="container mx-auto" style="padding:0 16px;height:72px;display:flex;align-items:center;justify-content:space-between;">
+                <a href="index.html" style="display:flex;flex-direction:column;align-items:center;text-decoration:none;transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.05)';" onmouseout="this.style.transform='scale(1)';">
+                    <div style="font-family:Georgia,serif;font-size:1.05rem;font-weight:700;letter-spacing:0.18em;color:#111;line-height:1;">Blossom Art</div>
+                    <div style="font-size:0.5rem;letter-spacing:0.45em;text-transform:uppercase;color:#aaa;margin-top:3px;">Galleries</div>
+                </a>
+                <div style="display:flex;align-items:center;gap:16px;">
+                    <div style="text-align:right;display:none;" class="sm:block">
+                        <div style="font-size:12px;font-weight:700;color:#111;">Administrator</div>
+                        <div style="font-size:10px;color:#22c55e;display:flex;align-items:center;gap:4px;justify-content:flex-end;">
+                            <span style="width:6px;height:6px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite;display:inline-block;"></span>
+                            Authorized Session
+                        </div>
+                    </div>
+                    <button onclick="doLogout()" style="border:1px solid #e5e5e5;background:#fff;color:#555;border-radius:10px;padding:8px 16px;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor='#f9c0c0';this.style.color='#c0392b';" onmouseout="this.style.borderColor='#e5e5e5';this.style.color='#555';">
+                        ↪ Log Out
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="container mx-auto slide-up" style="flex:1;padding:40px 16px 80px;">
+
+            <!-- Title -->
+            <div style="margin-bottom:36px;">
+                <p style="font-size:9px;text-transform:uppercase;letter-spacing:0.3em;color:#c0392b;font-weight:700;margin-bottom:6px;">Admin Management Suite</p>
+                <h1 style="font-family:Georgia,serif;font-size:2rem;font-weight:700;color:#111;line-height:1.2;">Add New Catalog Product</h1>
+                <p style="color:#888;font-size:13px;margin-top:6px;">Fill in the form below to add a new product to the website catalog.</p>
+            </div>
+
+            <!-- Grid: Form + Preview -->
+            <div style="display:grid;grid-template-columns:1fr;gap:28px;" id="main-grid">
+
+                <!-- LEFT: Form -->
+                <div style="background:#fff;border-radius:24px;padding:32px;border:1px solid rgba(0,0,0,0.06);box-shadow:0 2px 12px rgba(0,0,0,0.04);">
+                    <h2 style="font-family:Georgia,serif;font-size:1.1rem;font-weight:700;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid #f0f0f0;display:flex;align-items:center;gap:8px;color:#111;">
+                        📦 Product Details
+                    </h2>
+
+                    <form id="product-form" onsubmit="return false;">
+
+                        <!-- Category -->
+                        <div style="margin-bottom:20px;">
+                            <label style="display:block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#444;margin-bottom:8px;">Category <span style="color:#c0392b;">*</span></label>
+                            <select id="prod-category" onchange="onCategoryChange()" required
+                                style="width:100%;background:#fafaf8;border:1px solid #e5e5e5;border-radius:12px;padding:13px 16px;font-size:13px;outline:none;cursor:pointer;color:#111;transition:border 0.2s;"
+                                onfocus="this.style.borderColor='#888';"
+                                onblur="this.style.borderColor='#e5e5e5';">
+                                <option value="" disabled selected>— Select a Product Category —</option>
+                                <option value="artificial-flowers">Artificial Flowers (BAG AF)</option>
+                                <option value="artificial-flower-bunches">Artificial Flower Bunches (BAG AFB)</option>
+                                <option value="artificial-green-wall-panel">Artificial Green Wall Panel (BAG AGWP)</option>
+                                <option value="traditional-garlands">Traditional Garlands &amp; Haars (BAG TGH)</option>
+                                <option value="artificial-leaves">Artificial Leaves (BAG AL)</option>
+                                <option value="artificial-plants">Artificial Plants (BAG AP)</option>
+                                <option value="floral-supplies">Floral Supplies (BAG FS)</option>
+                                <option value="floral-arrangements">Floral Arrangements (BAG FA)</option>
+                                <option value="dried-decorations">Dried Decorations (BAG DD)</option>
+                                <option value="artificial-fruits">Artificial Fruits (BAG AFR)</option>
+                                <option value="event-decor">Event Decor (BAG ED)</option>
+                                <option value="artificial-flora">Artificial Flora (BAG AFL)</option>
+                            </select>
+                        </div>
+
+                        <!-- Auto-Generated Info -->
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;">
+                            <div style="background:#fafaf8;border:1px solid #efefef;border-radius:14px;padding:16px;">
+                                <div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#aaa;margin-bottom:4px;">Auto Product ID</div>
+                                <div id="suggested-id" style="font-family:Georgia,serif;font-weight:700;font-size:15px;color:#111;">— select category —</div>
+                            </div>
+                            <div style="background:#fafaf8;border:1px solid #efefef;border-radius:14px;padding:16px;">
+                                <div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#aaa;margin-bottom:4px;">Image Filename</div>
+                                <div id="suggested-img" style="font-family:Georgia,serif;font-weight:700;font-size:15px;color:#111;">— select category —</div>
+                            </div>
+                        </div>
+
+                        <!-- Name -->
+                        <div style="margin-bottom:20px;">
+                            <label style="display:block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#444;margin-bottom:8px;">Product Name <span style="color:#c0392b;">*</span></label>
+                            <input type="text" id="prod-name" placeholder="e.g. Premium White Rose Garland Bundle" required oninput="updatePreview()"
+                                style="width:100%;box-sizing:border-box;background:#fafaf8;border:1px solid #e5e5e5;border-radius:12px;padding:13px 16px;font-size:13px;outline:none;color:#111;transition:border 0.2s;"
+                                onfocus="this.style.borderColor='#888';"
+                                onblur="this.style.borderColor='#e5e5e5';">
+                        </div>
+
+                        <!-- Description -->
+                        <div style="margin-bottom:20px;">
+                            <label style="display:block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#444;margin-bottom:8px;">Description <span style="color:#c0392b;">*</span></label>
+                            <textarea id="prod-desc" rows="4" placeholder="Describe the product material, dimensions, use-case, and styles..." required oninput="updatePreview()"
+                                style="width:100%;box-sizing:border-box;background:#fafaf8;border:1px solid #e5e5e5;border-radius:12px;padding:13px 16px;font-size:13px;outline:none;color:#111;resize:vertical;transition:border 0.2s;font-family:inherit;"
+                                onfocus="this.style.borderColor='#888';"
+                                onblur="this.style.borderColor='#e5e5e5';"></textarea>
+                        </div>
+
+                        <!-- Image Upload -->
+                        <div style="margin-bottom:28px;">
+                            <label style="display:block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#444;margin-bottom:8px;">Product Image <span style="color:#c0392b;">*</span></label>
+
+                            <input type="file" id="file-input" accept="image/*" style="display:none;" onchange="onFileSelected(event)">
+
+                            <div id="dropzone"
+                                onclick="document.getElementById('file-input').click()"
+                                ondragover="event.preventDefault();this.classList.add('dropzone-active');"
+                                ondragleave="this.classList.remove('dropzone-active');"
+                                ondrop="event.preventDefault();this.classList.remove('dropzone-active');onFileDrop(event);"
+                                style="border:2px dashed #e0e0e0;border-radius:16px;padding:40px 20px;text-align:center;cursor:pointer;transition:all 0.25s;min-height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:#fafaf8;"
+                                onmouseover="this.style.borderColor='#c0392b';this.style.background='rgba(192,57,43,0.03)';"
+                                onmouseout="if(!this.classList.contains('dropzone-active'))this.style.borderColor='#e0e0e0';this.style.background='#fafaf8';">
+
+                                <div id="dz-default" style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+                                    <div style="width:52px;height:52px;border-radius:50%;background:#fff0f0;display:flex;align-items:center;justify-content:center;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#c0392b" stroke-width="2" viewBox="0 0 24 24"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>
+                                    </div>
+                                    <p style="font-size:13px;font-weight:600;color:#555;">Click to browse or drag &amp; drop image</p>
+                                    <p style="font-size:11px;color:#aaa;">JPG, PNG, WebP · Auto-optimized to WebP</p>
+                                </div>
+
+                                <div id="dz-preview" style="display:none;width:100%;flex-direction:column;align-items:center;gap:12px;">
+                                    <img id="dz-img" style="width:100%;max-height:160px;object-fit:cover;border-radius:10px;border:1px solid #eee;">
+                                    <div style="display:flex;align-items:center;justify-content:space-between;width:100%;background:#fff;border:1px solid #eee;border-radius:10px;padding:10px 14px;box-sizing:border-box;">
+                                        <div style="text-align:left;overflow:hidden;">
+                                            <p id="file-name" style="font-size:12px;font-weight:700;color:#111;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px;">filename.jpg</p>
+                                            <p id="file-size" style="font-size:10px;color:#aaa;">0 KB</p>
+                                        </div>
+                                        <button type="button" onclick="clearImage(event)" style="background:#fff0f0;color:#c0392b;border:none;border-radius:8px;padding:6px 12px;font-size:10px;font-weight:700;cursor:pointer;">Remove</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- GitHub Sync Toggle -->
+                        <div style="background:#f7f9ff;border:1px solid #e8ecf8;border-radius:16px;padding:20px;margin-bottom:20px;">
+                            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+                                <span style="font-size:12px;font-weight:700;color:#333;display:flex;align-items:center;gap:6px;">
+                                    🔗 GitHub Direct Sync
+                                </span>
+                                <label style="position:relative;display:inline-block;width:40px;height:22px;cursor:pointer;">
+                                    <input type="checkbox" id="gh-toggle" onchange="onGhToggle()" style="opacity:0;width:0;height:0;position:absolute;">
+                                    <span id="gh-slider" style="position:absolute;inset:0;background:#ccc;border-radius:22px;transition:0.3s;" onclick="toggleSlider(this)"></span>
+                                    <span id="gh-knob" style="position:absolute;left:3px;top:3px;width:16px;height:16px;background:#fff;border-radius:50%;transition:0.3s;box-shadow:0 1px 3px rgba(0,0,0,0.2);"></span>
+                                </label>
+                            </div>
+                            <p style="font-size:10px;color:#888;">Automatically upload image + update the product catalog directly in GitHub on click.</p>
+
+                            <div id="gh-fields" style="display:none;margin-top:16px;border-top:1px solid #e0e0e0;padding-top:16px;display:none;flex-direction:column;gap:10px;">
+                                <div>
+                                    <label style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#666;display:block;margin-bottom:4px;">Repository (username/repo)</label>
+                                    <input type="text" id="gh-repo" placeholder="ashuv1155/Blossom-Art-Galleries"
+                                        style="width:100%;box-sizing:border-box;background:#fff;border:1px solid #ddd;border-radius:8px;padding:9px 12px;font-size:12px;outline:none;color:#111;">
+                                </div>
+                                <div>
+                                    <label style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#666;display:block;margin-bottom:4px;">Personal Access Token</label>
+                                    <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"
+                                        style="width:100%;box-sizing:border-box;background:#fff;border:1px solid #ddd;border-radius:8px;padding:9px 12px;font-size:12px;outline:none;color:#111;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Publish Button -->
+                        <button type="button" onclick="publishProduct()"
+                            style="width:100%;background:#c0392b;color:#fff;border:none;border-radius:14px;padding:18px;font-size:12px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;box-shadow:0 4px 20px rgba(192,57,43,0.25);"
+                            onmouseover="this.style.background='#a93226';this.style.transform='translateY(-1px)';"
+                            onmouseout="this.style.background='#c0392b';this.style.transform='translateY(0)';">
+                            🚀 Publish Product
+                        </button>
+
+                    </form>
+                </div>
+
+                <!-- RIGHT: Live Preview -->
+                <div id="preview-panel" style="background:#fff;border-radius:24px;padding:28px;border:1px solid rgba(0,0,0,0.06);box-shadow:0 2px 12px rgba(0,0,0,0.04);">
+                    <h2 style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;color:#aaa;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid #f5f5f5;display:flex;align-items:center;gap:8px;">
+                        <span style="width:8px;height:8px;border-radius:50%;background:#c0392b;animation:pulse 2s infinite;display:inline-block;"></span>
+                        Live Catalog Preview
+                    </h2>
+
+                    <!-- Product Card (mirrors product.html card) -->
+                    <div style="max-width:320px;margin:0 auto;">
+                        <div class="group" style="background:#fff;border-radius:16px;box-shadow:0 2px 16px rgba(0,0,0,0.08);border:1px solid #f0f0f0;overflow:hidden;">
+                            <div style="position:relative;width:100%;aspect-ratio:4/3;background:#1a1a1a;overflow:hidden;">
+                                <div id="preview-placeholder" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:rgba(255,255,255,0.25);gap:8px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                                    <span style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;">Awaiting Image</span>
+                                </div>
+                                <img id="preview-img" style="width:100%;height:100%;object-fit:cover;display:none;" alt="">
+                                <div id="preview-badge" style="position:absolute;top:10px;left:10px;background:#c0392b;color:#fff;font-size:9px;font-weight:700;padding:5px 10px;border-radius:6px;">BAG ID</div>
+                            </div>
+                            <div style="padding:18px;">
+                                <div id="preview-cat" style="font-size:9px;color:#c0392b;text-transform:uppercase;letter-spacing:0.15em;font-weight:700;margin-bottom:6px;">Select Category</div>
+                                <h3 id="preview-name" style="font-family:Georgia,serif;font-size:1rem;font-weight:700;color:#111;margin-bottom:8px;line-height:1.3;">Product Name</h3>
+                                <p id="preview-desc" style="font-size:12px;color:#777;margin-bottom:16px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">Description will appear here once you start typing...</p>
+                                <div style="background:#22c55e;color:#fff;border-radius:10px;padding:10px;text-align:center;font-size:12px;font-weight:700;">WhatsApp Enquire</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Manage Products Section -->
+            <div style="background:#fff;border-radius:24px;padding:32px;border:1px solid rgba(0,0,0,0.06);box-shadow:0 2px 12px rgba(0,0,0,0.04);margin-top:36px;" class="fade-up">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid #f0f0f0;flex-wrap:wrap;gap:12px;">
+                    <h2 style="font-family:Georgia,serif;font-size:1.3rem;font-weight:700;display:flex;align-items:center;gap:8px;color:#111;margin:0;">
+                        📋 Manage Catalog Products
+                    </h2>
+                    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+                        <button onclick="resetCatalogToDefault()" style="background:#fff;border:1px solid #dc2626;color:#dc2626;border-radius:10px;padding:8px 16px;font-size:11px;font-weight:700;letter-spacing:0.05em;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.background='#fef2f2';" onmouseout="this.style.background='#fff';">
+                            ⚠️ Reset to Default
+                        </button>
+                        <button onclick="syncCatalogToGitHub()" id="sync-btn" style="display:none;background:#4f46e5;color:#fff;border:none;border-radius:10px;padding:8px 16px;font-size:11px;font-weight:700;letter-spacing:0.05em;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.background='#4338ca';" onmouseout="this.style.background='#4f46e5';">
+                            🔄 Sync to GitHub
+                        </button>
+                        <span id="manage-count" style="background:#f3f4f6;color:#374151;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;">0 Products</span>
+                    </div>
+                </div>
+
+                <!-- Search & Filter Controls -->
+                <div class="manage-controls" style="display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:24px;">
+                    <input type="text" id="manage-search" placeholder="Search by name, ID or description..." oninput="renderManageList()"
+                        style="box-sizing:border-box;width:100%;background:#fafaf8;border:1px solid #e5e5e5;border-radius:12px;padding:12px 16px;font-size:13px;outline:none;color:#111;transition:all 0.2s;"
+                        onfocus="this.style.borderColor='#888';"
+                        onblur="this.style.borderColor='#e5e5e5';">
+                    
+                    <select id="manage-filter-cat" onchange="renderManageList()"
+                        style="background:#fafaf8;border:1px solid #e5e5e5;border-radius:12px;padding:12px 16px;font-size:13px;outline:none;color:#111;cursor:pointer;transition:all 0.2s;"
+                        onfocus="this.style.borderColor='#888';"
+                        onblur="this.style.borderColor='#e5e5e5';">
+                        <option value="all">All Categories</option>
+                        <option value="artificial-flowers">Artificial Flowers</option>
+                        <option value="artificial-flower-bunches">Artificial Flower Bunches</option>
+                        <option value="artificial-green-wall-panel">Artificial Green Wall Panel</option>
+                        <option value="traditional-garlands">Traditional Garlands &amp; Haars</option>
+                        <option value="artificial-leaves">Artificial Leaves</option>
+                        <option value="artificial-plants">Artificial Plants</option>
+                        <option value="floral-supplies">Floral Supplies</option>
+                        <option value="floral-arrangements">Floral Arrangements</option>
+                        <option value="dried-decorations">Dried Decorations</option>
+                        <option value="artificial-fruits">Artificial Fruits</option>
+                        <option value="event-decor">Event Decor</option>
+                        <option value="artificial-flora">Artificial Flora</option>
+                    </select>
+
+                    <select id="manage-filter-status" onchange="renderManageList()"
+                        style="background:#fafaf8;border:1px solid #e5e5e5;border-radius:12px;padding:12px 16px;font-size:13px;outline:none;color:#111;cursor:pointer;transition:all 0.2s;"
+                        onfocus="this.style.borderColor='#888';"
+                        onblur="this.style.borderColor='#e5e5e5';">
+                        <option value="all">All Statuses</option>
+                        <option value="listed">Listed Only</option>
+                        <option value="unlisted">Unlisted Only</option>
+                    </select>
+                </div>
+
+                <!-- Product Table -->
+                <div style="overflow-x:auto;">
+                    <table style="width:100%;border-collapse:collapse;text-align:left;font-size:13px;min-width:600px;">
+                        <thead>
+                            <tr style="border-bottom:2px solid #f3f4f6;color:#6b7280;text-transform:uppercase;font-size:10px;letter-spacing:0.05em;font-weight:700;">
+                                <th style="padding:12px 16px;">Product</th>
+                                <th style="padding:12px 16px;">Category</th>
+                                <th style="padding:12px 16px;">Status</th>
+                                <th style="padding:12px 16px;text-align:right;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="manage-list-body">
+                            <!-- Dynamic rows inserted via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- No results message -->
+                <div id="manage-no-results" style="display:none;text-align:center;padding:60px 20px;color:#9ca3af;font-size:14px;font-weight:500;">
+                    No products match your search or filter.
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toast-wrap" style="position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:99999;display:flex;flex-direction:column;align-items:center;gap:10px;pointer-events:none;width:360px;max-width:90vw;"></div>
+
+    <!-- Scripts -->
+    <script src="assets/products-data.js"></script>
+    <script>
+        // ============================================================
+        //  SAFE STORAGE WRAPPERS (Crash Protection for file:// sandbox)
+        // ============================================================
+        const safeStorage = (storageObj) => ({
+            getItem: (key) => {
+                try { return storageObj.getItem(key); } catch (e) { return null; }
+            },
+            setItem: (key, val) => {
+                try { storageObj.setItem(key, val); } catch (e) {}
+            },
+            removeItem: (key) => {
+                try { storageObj.removeItem(key); } catch (e) {}
+            }
+        });
+        const localStorage = safeStorage(window.localStorage);
+        const sessionStorage = safeStorage(window.sessionStorage);
+
+        // ============================================================
+        //  CONFIG
+        // ============================================================
+        const ADMIN_PASSWORD = "BlossomArt2026";
+        const DEFAULT_GITHUB_REPO = "ashuv1155/Blossom-Art-Galleries";
+        // Left blank for GitHub Push Protection compliance. 
+        // When you enter your token in the Admin Dashboard once, your browser will securely save it in your private localStorage.
+        const DEFAULT_GITHUB_TOKEN = "";
+
+        const CATEGORY_PREFIXES = {
+            "artificial-flowers":       "BAG AF",
+            "artificial-flower-bunches":"BAG AFB",
+            "artificial-green-wall-panel":"BAG AGWP",
+            "traditional-garlands":     "BAG TGH",
+            "artificial-leaves":        "BAG AL",
+            "artificial-plants":        "BAG AP",
+            "floral-supplies":          "BAG FS",
+            "floral-arrangements":      "BAG FA",
+            "dried-decorations":        "BAG DD",
+            "artificial-fruits":        "BAG AFR",
+            "event-decor":              "BAG ED",
+            "artificial-flora":         "BAG AFL"
+        };
+
+        // ============================================================
+        //  STATE
+        // ============================================================
+        let uploadedBase64 = null;
+        let uploadedFile = null;
+        let genId = "";
+        let genImgName = "";
+        let activeProducts = [];
+        let editingProduct = null;
+
+        // ============================================================
+        //  INIT
+        // ============================================================
+        window.onload = function () {
+            // Restore session if already unlocked
+            if (sessionStorage.getItem("ba_admin") === "1") {
+                showDashboard();
+            }
+
+            // Restore GH settings
+            // Restore GH settings
+            const savedRepo = localStorage.getItem("ba_gh_repo") || DEFAULT_GITHUB_REPO;
+            const savedToken = localStorage.getItem("ba_gh_token") || DEFAULT_GITHUB_TOKEN;
+            document.getElementById("gh-repo").value = savedRepo;
+            document.getElementById("gh-token").value = savedToken;
+
+            const ghToggleState = localStorage.getItem("ba_gh_on");
+            if (ghToggleState === null || ghToggleState === "1") {
+                document.getElementById("gh-toggle").checked = true;
+                document.getElementById("gh-fields").style.display = "flex";
+                document.getElementById("gh-slider").style.background = "#4f46e5";
+                document.getElementById("gh-knob").style.left = "21px";
+                document.getElementById("sync-btn").style.display = "block";
+                localStorage.setItem("ba_gh_on", "1");
+            }
+
+            // Make the responsive grid 2-cols on big screens
+            if (window.innerWidth >= 1024) {
+                document.getElementById("main-grid").style.gridTemplateColumns = "1fr 1fr";
+            }
+        };
+
+        // Initialize products from localStorage
+        function initProducts() {
+            let localData = localStorage.getItem("PRODUCTS_DATA");
+            let defaultProducts = typeof PRODUCTS_DATA !== 'undefined' ? PRODUCTS_DATA : [];
+            
+            if (localData) {
+                try {
+                    activeProducts = JSON.parse(localData);
+                    // Automatically re-initialize if the array was saved empty by mistake
+                    if (activeProducts.length === 0 && defaultProducts.length > 0) {
+                        activeProducts = defaultProducts;
+                        localStorage.setItem("PRODUCTS_DATA", JSON.stringify(activeProducts));
+                    }
+                } catch(e) {
+                    console.error("Error loading localStorage products:", e);
+                    activeProducts = defaultProducts;
+                }
+            } else {
+                activeProducts = defaultProducts;
+                localStorage.setItem("PRODUCTS_DATA", JSON.stringify(activeProducts));
+            }
+        }
+
+        // ============================================================
+        //  LOCK / UNLOCK
+        // ============================================================
+        function doUnlock(e) {
+            e.preventDefault();
+            const val = document.getElementById("passcode-input").value.trim();
+            if (val === ADMIN_PASSWORD) {
+                sessionStorage.setItem("ba_admin", "1");
+                showDashboard();
+            } else {
+                document.getElementById("lock-error").style.display = "block";
+                document.getElementById("passcode-input").value = "";
+                document.getElementById("passcode-input").focus();
+            }
+        }
+
+        function showDashboard() {
+            document.getElementById("lock-screen").style.display = "none";
+            const d = document.getElementById("dashboard-wrap");
+            d.style.display = "flex";
+            initProducts();
+            renderManageList();
+            showToast("success", "Dashboard Unlocked", "Welcome to Blossom Art Admin Suite.");
+        }
+
+        function doLogout() {
+            sessionStorage.removeItem("ba_admin");
+            location.reload();
+        }
+
+        function toggleShowPw() {
+            const inp = document.getElementById("passcode-input");
+            const icon = document.getElementById("pw-eye-icon");
+            if (inp.type === "password") {
+                inp.type = "text";
+                icon.innerHTML = '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>';
+            } else {
+                inp.type = "password";
+                icon.innerHTML = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
+            }
+        }
+
+        // ============================================================
+        //  CATEGORY CALCULATION
+        // ============================================================
+        function onCategoryChange() {
+            const cat = document.getElementById("prod-category").value;
+            if (!cat || !CATEGORY_PREFIXES[cat]) return;
+            const prefix = CATEGORY_PREFIXES[cat];
+
+            // If editing an existing product, lock suggested ID to that product's ID
+            if (editingProduct) {
+                document.getElementById("suggested-id").textContent = editingProduct.id;
+                document.getElementById("suggested-img").textContent = editingProduct.image.substring(editingProduct.image.lastIndexOf('/') + 1);
+                updatePreview();
+                return;
+            }
+
+            let maxId = 0, maxImg = 0;
+            const targetArray = activeProducts.length > 0 ? activeProducts : (typeof PRODUCTS_DATA !== 'undefined' ? PRODUCTS_DATA : []);
+            if (targetArray && Array.isArray(targetArray)) {
+                targetArray.forEach(p => {
+                    // Max ID for this prefix
+                    if (p.id && p.id.startsWith(prefix + " ")) {
+                        const n = parseInt(p.id.replace(prefix + " ", ""), 10);
+                        if (!isNaN(n) && n > maxId) maxId = n;
+                    }
+                    // Max image number
+                    if (p.image) {
+                        const m = p.image.match(/(\d+)\.webp/);
+                        if (m) { const n = parseInt(m[1], 10); if (n > maxImg) maxImg = n; }
+                    }
+                });
+            }
+
+            genId = prefix + " " + (maxId + 1);
+            genImgName = (maxImg + 1) + ".webp";
+
+            document.getElementById("suggested-id").textContent = genId;
+            document.getElementById("suggested-img").textContent = genImgName;
+            document.getElementById("preview-badge").textContent = genId;
+            updatePreview();
+        }
+
+        // ============================================================
+        //  LIVE PREVIEW
+        // ============================================================
+        function updatePreview() {
+            const name = document.getElementById("prod-name").value.trim() || "Product Name";
+            const desc = document.getElementById("prod-desc").value.trim() || "Description will appear here once you start typing...";
+            const sel = document.getElementById("prod-category");
+            const catText = sel.selectedIndex > 0 ? sel.options[sel.selectedIndex].text.split(" (")[0] : "Select Category";
+
+            document.getElementById("preview-name").textContent = name;
+            document.getElementById("preview-desc").textContent = desc;
+            document.getElementById("preview-cat").textContent = catText;
+            document.getElementById("preview-badge").textContent = genId || "BAG ID";
+        }
+
+        // ============================================================
+        //  IMAGE HANDLING
+        // ============================================================
+        function onFileSelected(e) {
+            if (e.target.files && e.target.files[0]) processFile(e.target.files[0]);
+        }
+
+        function onFileDrop(e) {
+            if (e.dataTransfer.files && e.dataTransfer.files[0]) processFile(e.dataTransfer.files[0]);
+        }
+
+        function processFile(file) {
+            if (!file.type.startsWith("image/")) {
+                showToast("error", "Invalid File", "Please select an image file (JPG, PNG, WebP).");
+                return;
+            }
+            uploadedFile = file;
+
+            const reader = new FileReader();
+            reader.onload = function(ev) {
+                const src = ev.target.result;
+                // Show preview
+                document.getElementById("dz-default").style.display = "none";
+                document.getElementById("dz-preview").style.display = "flex";
+                document.getElementById("dz-img").src = src;
+                document.getElementById("file-name").textContent = file.name;
+                document.getElementById("file-size").textContent = formatBytes(file.size);
+                // Live card preview
+                document.getElementById("preview-img").src = src;
+                document.getElementById("preview-img").style.display = "block";
+                document.getElementById("preview-placeholder").style.display = "none";
+                // Compress
+                compressWebP(file, function(b64) {
+                    uploadedBase64 = b64;
+                    const sz = Math.round((b64.length * 3) / 4);
+                    document.getElementById("file-size").innerHTML = '<span style="color:#22c55e;font-weight:700;">✓ WebP Optimized: </span>' + formatBytes(sz);
+                });
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function clearImage(e) {
+            e.stopPropagation();
+            uploadedFile = null;
+            uploadedBase64 = null;
+            document.getElementById("file-input").value = "";
+            document.getElementById("dz-default").style.display = "flex";
+            document.getElementById("dz-preview").style.display = "none";
+            document.getElementById("dz-img").src = "";
+            document.getElementById("preview-img").src = "";
+            document.getElementById("preview-img").style.display = "none";
+            document.getElementById("preview-placeholder").style.display = "flex";
+        }
+
+        function compressWebP(file, cb) {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = function(e) {
+                const img = new Image();
+                img.src = e.target.result;
+                img.onload = function() {
+                    const canvas = document.createElement("canvas");
+                    let w = img.width, h = img.height;
+                    const MAX = 800;
+                    if (w > h && w > MAX) { h = h * MAX / w; w = MAX; }
+                    else if (h > w && h > MAX) { w = w * MAX / h; h = MAX; }
+                    else if (w > MAX) { h = h * MAX / w; w = MAX; }
+                    canvas.width = Math.round(w);
+                    canvas.height = Math.round(h);
+                    canvas.getContext("2d").drawImage(img, 0, 0, canvas.width, canvas.height);
+                    let url = canvas.toDataURL("image/webp", 0.82);
+                    if (!url.startsWith("data:image/webp")) url = canvas.toDataURL("image/jpeg", 0.82);
+                    cb(url.split(",")[1]);
+                };
+            };
+        }
+
+        // ============================================================
+        //  GITHUB TOGGLE
+        // ============================================================
+        function onGhToggle() {
+            const on = document.getElementById("gh-toggle").checked;
+            const fields = document.getElementById("gh-fields");
+            const slider = document.getElementById("gh-slider");
+            const knob = document.getElementById("gh-knob");
+            if (on) {
+                fields.style.display = "flex";
+                slider.style.background = "#4f46e5";
+                knob.style.left = "21px";
+                localStorage.setItem("ba_gh_on", "1");
+                const syncBtn = document.getElementById("sync-btn");
+                if (syncBtn) syncBtn.style.display = "block";
+            } else {
+                fields.style.display = "none";
+                slider.style.background = "#ccc";
+                knob.style.left = "3px";
+                localStorage.removeItem("ba_gh_on");
+                const syncBtn = document.getElementById("sync-btn");
+                if (syncBtn) syncBtn.style.display = "none";
+            }
+        }
+
+        // ============================================================
+        //  LOCAL DEV SERVER SYNC
+        // ============================================================
+        async function doLocalServerSync(actionType) {
+            const isLocalServer = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.port === '8000';
+            if (!isLocalServer) return false;
+            
+            try {
+                if (actionType === 'upload-image') {
+                    if (!uploadedBase64) return true;
+                    const r = await fetch('/api/upload-image', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ filename: genImgName, image: uploadedBase64 })
+                    });
+                    if (!r.ok) { const err = await r.json(); throw new Error(err.message || r.statusText); }
+                    return true;
+                }
+                
+                const r = await fetch('/api/save-catalog', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ products: activeProducts })
+                });
+                if (!r.ok) { const err = await r.json(); throw new Error(err.message || r.statusText); }
+                return true;
+            } catch(e) {
+                console.error("Local server sync failed:", e);
+                showToast("error", "Local Server Sync Failed", e.message || "Could not write to local project files.");
+                return false;
+            }
+        }
+
+        async function doLocalServerPublish(cat, name, desc) {
+            const t = showToast("info", "Saving locally…", "Saving files directly to your project folders.");
+            try {
+                const imgSuccess = await doLocalServerSync('upload-image');
+                if (!imgSuccess) throw new Error("Failed to save image on local server.");
+                
+                const newProd = { id: genId, name: name, category: cat, image: "assets/images/products/" + genImgName, alt: name, description: desc };
+                activeProducts.push(newProd);
+                localStorage.setItem("PRODUCTS_DATA", JSON.stringify(activeProducts));
+                window.PRODUCTS_DATA = activeProducts;
+                
+                const catSuccess = await doLocalServerSync('save-catalog');
+                if (!catSuccess) throw new Error("Failed to write products-data.js to local disk.");
+                
+                t.remove();
+                showToast("success", "Published Locally!", `${genId} has been added directly to your local project files.`);
+                resetForm();
+                renderManageList();
+            } catch(err) {
+                t.remove();
+                showToast("error", "Local Server Error", err.message);
+            }
+        }
+
+        async function doLocalServerUpdate(cat, name, desc) {
+            const t = showToast("info", "Updating locally…", "Saving changes directly to your project folders.");
+            try {
+                let finalImagePath = editingProduct.image;
+                if (uploadedBase64) {
+                    finalImagePath = "assets/images/products/" + genImgName;
+                    const imgSuccess = await doLocalServerSync('upload-image');
+                    if (!imgSuccess) throw new Error("Failed to save image on local server.");
+                }
+                
+                const index = activeProducts.findIndex(p => p.id === editingProduct.id);
+                if (index !== -1) {
+                    activeProducts[index] = {
+                        ...activeProducts[index],
+                        name: name,
+                        category: cat,
+                        image: finalImagePath,
+                        alt: name,
+                        description: desc
+                    };
+                }
+                
+                localStorage.setItem("PRODUCTS_DATA", JSON.stringify(activeProducts));
+                window.PRODUCTS_DATA = activeProducts;
+                
+                const catSuccess = await doLocalServerSync('save-catalog');
+                if (!catSuccess) throw new Error("Failed to save updated catalog on local disk.");
+                
+                t.remove();
+                showToast("success", "Product Updated!", `${editingProduct.id} changes saved directly to project files.`);
+                cancelEdit();
+                renderManageList();
+            } catch(err) {
+                t.remove();
+                showToast("error", "Local Server Error", err.message);
+            }
+        }
+
+        // ============================================================
+        //  PUBLISH
+        // ============================================================
+        function publishProduct() {
+            const cat  = document.getElementById("prod-category").value;
+            const name = document.getElementById("prod-name").value.trim();
+            const desc = document.getElementById("prod-desc").value.trim();
+
+            if (!cat)  { showToast("error", "Missing Category", "Please select a product category."); return; }
+            if (!name) { showToast("error", "Missing Name", "Please enter a product name."); return; }
+            if (!desc) { showToast("error", "Missing Description", "Please enter a product description."); return; }
+            
+            if (!editingProduct && !uploadedBase64) { 
+                showToast("error", "No Image", "Please upload a product image first."); 
+                return; 
+            }
+
+            const ghOn    = document.getElementById("gh-toggle").checked;
+            const ghRepo  = document.getElementById("gh-repo").value.trim();
+            const ghToken = document.getElementById("gh-token").value.trim();
+
+            if (ghOn && (!ghRepo || !ghToken)) {
+                showToast("error", "GitHub Credentials Missing", "Enter repository and token to use Direct Sync.");
+                return;
+            }
+
+            const isLocalServer = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.port === '8000';
+
+            if (editingProduct) {
+                if (isLocalServer && !ghOn) {
+                    doLocalServerUpdate(cat, name, desc);
+                } else {
+                    doUpdateProduct(cat, name, desc, ghOn, ghRepo, ghToken);
+                }
+            } else {
+                if (isLocalServer && !ghOn) {
+                    doLocalServerPublish(cat, name, desc);
+                } else if (ghOn) {
+                    localStorage.setItem("ba_gh_repo", ghRepo);
+                    localStorage.setItem("ba_gh_token", ghToken);
+                    doGithubSync(cat, name, desc, ghRepo, ghToken);
+                } else {
+                    doLocalDownload(cat, name, desc);
+                }
+            }
+        }
+
+        async function doGithubSync(cat, name, desc, repo, token) {
+            const t = showToast("info", "Uploading to GitHub…", "Please wait, committing files.");
+            try {
+                const imgPath = "assets/images/products/" + genImgName;
+                const r1 = await fetch("https://api.github.com/repos/" + repo + "/contents/" + imgPath, {
+                    method: "PUT",
+                    headers: { "Authorization": "token " + token, "Content-Type": "application/json" },
+                    body: JSON.stringify({ message: "add " + genImgName + " via admin portal", content: uploadedBase64 })
+                });
+                if (!r1.ok) { const e = await r1.json(); throw new Error("Image upload: " + (e.message || r1.status)); }
+
+                const jsPath = "assets/products-data.js";
+                const r2 = await fetch("https://api.github.com/repos/" + repo + "/contents/" + jsPath, {
+                    headers: { "Authorization": "token " + token }
+                });
+                if (!r2.ok) throw new Error("Could not fetch products-data.js from GitHub");
+                const jsJson = await r2.json();
+
+                const newProd = { id: genId, name: name, category: cat, image: "assets/images/products/" + genImgName, alt: name, description: desc };
+                activeProducts.push(newProd);
+                localStorage.setItem("PRODUCTS_DATA", JSON.stringify(activeProducts));
+                window.PRODUCTS_DATA = activeProducts;
+
+                const newJs = "// Blossom Art Galleries — Product Catalog Array\nconst PRODUCTS_DATA = " + JSON.stringify(activeProducts, null, 2) + ";\n";
+                const enc = btoa(unescape(encodeURIComponent(newJs)));
+
+                const r3 = await fetch("https://api.github.com/repos/" + repo + "/contents/" + jsPath, {
+                    method: "PUT",
+                    headers: { "Authorization": "token " + token, "Content-Type": "application/json" },
+                    body: JSON.stringify({ message: "add product " + genId + " via admin portal", content: enc, sha: jsJson.sha })
+                });
+                if (!r3.ok) { const e = await r3.json(); throw new Error("Catalog update: " + (e.message || r3.status)); }
+
+                t.remove();
+                showToast("success", "Published to GitHub!", genId + " is now live in the repository.");
+                resetForm();
+                renderManageList();
+            } catch(err) {
+                t.remove();
+                showToast("error", "GitHub Error", err.message);
+            }
+        }
+
+        function doLocalDownload(cat, name, desc) {
+            const newProd = { id: genId, name: name, category: cat, image: "assets/images/products/" + genImgName, alt: name, description: desc };
+            activeProducts.push(newProd);
+            localStorage.setItem("PRODUCTS_DATA", JSON.stringify(activeProducts));
+            window.PRODUCTS_DATA = activeProducts;
+
+            const js = "// Blossom Art Galleries — Product Catalog Array\nconst PRODUCTS_DATA = " + JSON.stringify(activeProducts, null, 2) + ";\n";
+            const blob = new Blob([js], { type: "text/javascript" });
+            const a = document.createElement("a");
+            a.href = URL.createObjectURL(blob);
+            a.download = "products-data.js";
+            a.click();
+            showToast("success", "Catalog Downloaded!", "Replace assets/products-data.js in your project folder.");
+            resetForm();
+            renderManageList();
+        }
+
+        async function doUpdateProduct(cat, name, desc, ghOn, repo, token) {
+            const t = showToast("info", "Saving changes…", "Please wait, updating product details.");
+            try {
+                let finalImagePath = editingProduct.image;
+                
+                if (uploadedBase64) {
+                    finalImagePath = "assets/images/products/" + genImgName;
+                    if (ghOn) {
+                        const r1 = await fetch("https://api.github.com/repos/" + repo + "/contents/" + finalImagePath, {
+                            method: "PUT",
+                            headers: { "Authorization": "token " + token, "Content-Type": "application/json" },
+                            body: JSON.stringify({ message: "update image for " + editingProduct.id + " via admin portal", content: uploadedBase64 })
+                        });
+                        if (!r1.ok) { const e = await r1.json(); throw new Error("Image upload: " + (e.message || r1.status)); }
+                    }
+                }
+
+                const index = activeProducts.findIndex(p => p.id === editingProduct.id);
+                if (index !== -1) {
+                    activeProducts[index] = {
+                        ...activeProducts[index],
+                        name: name,
+                        category: cat,
+                        image: finalImagePath,
+                        alt: name,
+                        description: desc
+                    };
+                }
+
+                localStorage.setItem("PRODUCTS_DATA", JSON.stringify(activeProducts));
+                window.PRODUCTS_DATA = activeProducts;
+
+                if (ghOn) {
+                    const jsPath = "assets/products-data.js";
+                    const r2 = await fetch("https://api.github.com/repos/" + repo + "/contents/" + jsPath, {
+                        headers: { "Authorization": "token " + token }
+                    });
+                    if (!r2.ok) throw new Error("Could not fetch products-data.js from GitHub");
+                    const jsJson = await r2.json();
+
+                    const jsContent = "// Blossom Art Galleries — Product Catalog Array\nconst PRODUCTS_DATA = " + JSON.stringify(activeProducts, null, 2) + ";\n";
+                    const enc = btoa(unescape(encodeURIComponent(jsContent)));
+
+                    const r3 = await fetch("https://api.github.com/repos/" + repo + "/contents/" + jsPath, {
+                        method: "PUT",
+                        headers: { "Authorization": "token " + token, "Content-Type": "application/json" },
+                        body: JSON.stringify({ message: "update product " + editingProduct.id + " via admin portal", content: enc, sha: jsJson.sha })
+                    });
+                    if (!r3.ok) { const e = await r3.json(); throw new Error("Catalog update: " + (e.message || r3.status)); }
+
+                    t.remove();
+                    showToast("success", "Product Updated!", `${editingProduct.id} changes have been published to GitHub.`);
+                } else {
+                    t.remove();
+                    const jsContent = "// Blossom Art Galleries — Product Catalog Array\nconst PRODUCTS_DATA = " + JSON.stringify(activeProducts, null, 2) + ";\n";
+                    const blob = new Blob([jsContent], { type: "text/javascript" });
+                    const a = document.createElement("a");
+                    a.href = URL.createObjectURL(blob);
+                    a.download = "products-data.js";
+                    a.click();
+                    showToast("success", "Catalog Downloaded!", "Replace assets/products-data.js in your project folder.");
+                }
+
+                cancelEdit();
+                renderManageList();
+            } catch(err) {
+                t.remove();
+                showToast("error", "Update Error", err.message);
+            }
+        }
+
+        async function syncCatalogToGitHub() {
+            const ghRepo = document.getElementById("gh-repo").value.trim();
+            const ghToken = document.getElementById("gh-token").value.trim();
+
+            if (!ghRepo || !ghToken) {
+                showToast("error", "GitHub Credentials Missing", "Enter repository and token to sync changes.");
+                return;
+            }
+
+            const t = showToast("info", "Syncing catalog…", "Updating assets/products-data.js on GitHub.");
+            try {
+                const jsPath = "assets/products-data.js";
+                const r2 = await fetch("https://api.github.com/repos/" + ghRepo + "/contents/" + jsPath, {
+                    headers: { "Authorization": "token " + ghToken }
+                });
+                if (!r2.ok) throw new Error("Could not fetch products-data.js from GitHub to get SHA");
+                const jsJson = await r2.json();
+
+                const jsContent = "// Blossom Art Galleries — Product Catalog Array\nconst PRODUCTS_DATA = " + JSON.stringify(activeProducts, null, 2) + ";\n";
+                const enc = btoa(unescape(encodeURIComponent(jsContent)));
+
+                const r3 = await fetch("https://api.github.com/repos/" + ghRepo + "/contents/" + jsPath, {
+                    method: "PUT",
+                    headers: { "Authorization": "token " + ghToken, "Content-Type": "application/json" },
+                    body: JSON.stringify({ message: "sync product catalog via admin portal", content: enc, sha: jsJson.sha })
+                });
+                if (!r3.ok) { const e = await r3.json(); throw new Error("Catalog update: " + (e.message || r3.status)); }
+
+                t.remove();
+                showToast("success", "Synced to GitHub!", "All catalog changes are now live on GitHub.");
+            } catch(err) {
+                t.remove();
+                showToast("error", "Sync Error", err.message);
+            }
+        }
+
+        function resetForm() {
+            document.getElementById("prod-name").value = "";
+            document.getElementById("prod-desc").value = "";
+            document.getElementById("prod-category").value = "";
+            document.getElementById("suggested-id").textContent = "— select category —";
+            document.getElementById("suggested-img").textContent = "— select category —";
+            clearImage({ stopPropagation: function(){} });
+            genId = ""; genImgName = "";
+            updatePreview();
+        }
+
+        // ============================================================
+        //  PRODUCT MANAGEMENT ACTIONS
+        // ============================================================
+        function renderManageList() {
+            const listBody = document.getElementById("manage-list-body");
+            const noResults = document.getElementById("manage-no-results");
+            const countEl = document.getElementById("manage-count");
+            
+            const query = document.getElementById("manage-search").value.toLowerCase().trim();
+            const catFilter = document.getElementById("manage-filter-cat").value;
+            const statusFilter = document.getElementById("manage-filter-status").value;
+
+            listBody.innerHTML = "";
+
+            const filtered = activeProducts.filter(p => {
+                const matchesQuery = p.id.toLowerCase().includes(query) || 
+                                     p.name.toLowerCase().includes(query) || 
+                                     (p.description && p.description.toLowerCase().includes(query));
+                const matchesCat = catFilter === "all" || p.category === catFilter;
+                const matchesStatus = statusFilter === "all" || 
+                                      (statusFilter === "listed" && !p.unlisted) || 
+                                      (statusFilter === "unlisted" && p.unlisted);
+                return matchesQuery && matchesCat && matchesStatus;
+            });
+
+            if (filtered.length === 0) {
+                noResults.style.display = "block";
+                countEl.textContent = "0 Products";
+                return;
+            }
+            noResults.style.display = "none";
+            countEl.textContent = `${filtered.length} Product${filtered.length === 1 ? '' : 's'}`;
+
+            filtered.forEach(p => {
+                const tr = document.createElement("tr");
+                tr.style.borderBottom = "1px solid #f3f4f6";
+                tr.style.transition = "background-color 0.2s";
+                tr.onmouseover = () => tr.style.backgroundColor = "#fafaf9";
+                tr.onmouseout = () => tr.style.backgroundColor = "transparent";
+
+                let categoryLabel = p.category.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+                if (p.category === 'traditional-garlands') categoryLabel = "Traditional Garlands";
+
+                tr.innerHTML = `
+                    <td style="padding:16px;display:flex;align-items:center;gap:12px;">
+                        <img src="${p.image}" alt="${p.alt || p.name}" style="width:40px;height:40px;object-fit:cover;border-radius:8px;border:1px solid #f3f4f6;background:#f9f9f8;" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'40\' height=\'40\' fill=\'none\' stroke=\'%23ccc\' stroke-width=\'1.5\' viewBox=\'0 0 24 24\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><polyline points=\'21 15 16 10 5 21\'/></svg>'">
+                        <div>
+                            <div style="font-weight:700;color:#111;font-size:13px;">${p.id}</div>
+                            <div style="color:#555;font-size:12px;font-weight:500;max-width:240px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" title="${p.name}">${p.name}</div>
+                        </div>
+                    </td>
+                    <td style="padding:16px;color:#6b7280;font-size:12px;font-weight:500;">
+                        ${categoryLabel}
+                    </td>
+                    <td style="padding:16px;">
+                        ${p.unlisted ? 
+                          `<span style="background:#fef3c7;color:#d97706;font-size:10px;font-weight:700;padding:4px 8px;border-radius:999px;text-transform:uppercase;letter-spacing:0.05em;">Unlisted</span>` : 
+                          `<span style="background:#dcfce7;color:#15803d;font-size:10px;font-weight:700;padding:4px 8px;border-radius:999px;text-transform:uppercase;letter-spacing:0.05em;">Listed</span>`
+                        }
+                    </td>
+                    <td style="padding:16px;text-align:right;">
+                        <div style="display:flex;justify-content:flex-end;gap:8px;">
+                            <button onclick="startEdit('${p.id}')" style="background:#fff;border:1px solid #e5e5e5;color:#374151;font-size:11px;font-weight:700;padding:6px 12px;border-radius:8px;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor='#888';this.style.background='#f9f9f8';" onmouseout="this.style.borderColor='#e5e5e5';this.style.background='#fff';">
+                                ✏️ Edit
+                            </button>
+                            <button onclick="toggleUnlist('${p.id}')" style="background:#fff;border:1px solid #e5e5e5;color:${p.unlisted ? '#15803d' : '#d97706'};font-size:11px;font-weight:700;padding:6px 12px;border-radius:8px;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.borderColor='currentColor';this.style.background='#f9f9f8';" onmouseout="this.style.borderColor='#e5e5e5';this.style.background='#fff';">
+                                ${p.unlisted ? '👁️ List' : '👁️‍🗨️ Unlist'}
+                            </button>
+                            <button onclick="deleteProduct('${p.id}')" style="background:#fff5f5;border:1px solid #fecaca;color:#dc2626;font-size:11px;font-weight:700;padding:6px 12px;border-radius:8px;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.background='#fee2e2';" onmouseout="this.style.background='#fff5f5';">
+                                🗑️ Delete
+                            </button>
+                        </div>
+                    </td>
+                `;
+                listBody.appendChild(tr);
+            });
+        }
+
+        function startEdit(id) {
+            const prod = activeProducts.find(p => p.id === id);
+            if (!prod) return;
+            
+            editingProduct = prod;
+            
+            // Scroll to form smoothly
+            document.getElementById("main-grid").scrollIntoView({ behavior: 'smooth' });
+
+            // Show editing banner
+            let editBanner = document.getElementById("edit-banner");
+            if (!editBanner) {
+                editBanner = document.createElement("div");
+                editBanner.id = "edit-banner";
+                editBanner.style.cssText = "background:#fffbeb;border:1px solid #fef3c7;border-radius:12px;padding:12px 16px;margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;";
+                const form = document.getElementById("product-form");
+                form.parentNode.insertBefore(editBanner, form);
+            }
+            editBanner.innerHTML = `
+                <span style="font-size:12px;color:#d97706;font-weight:700;">✏️ Editing Product: <span style="font-family:Georgia,serif;font-size:13px;color:#111;">${prod.id}</span></span>
+                <button onclick="cancelEdit()" style="background:#fff;border:1px solid #f59e0b;color:#d97706;font-size:10px;font-weight:700;padding:4px 10px;border-radius:6px;cursor:pointer;">Cancel Edit</button>
+            `;
+            editBanner.style.display = "flex";
+
+            // Change Header Title and Subtext
+            document.querySelector("main h1").textContent = "Edit Catalog Product";
+            document.querySelector("main h1").nextElementSibling.textContent = `Modifying details for product ${prod.id}.`;
+
+            // Fill form fields
+            document.getElementById("prod-category").value = prod.category;
+            document.getElementById("prod-name").value = prod.name;
+            document.getElementById("prod-desc").value = prod.description;
+            
+            // Set auto-generated info section to show current edit ID
+            document.getElementById("suggested-id").textContent = prod.id;
+            // Extract filename from image path
+            const currentImgName = prod.image.substring(prod.image.lastIndexOf('/') + 1);
+            document.getElementById("suggested-img").textContent = currentImgName;
+
+            // Show image preview
+            document.getElementById("dz-default").style.display = "none";
+            document.getElementById("dz-preview").style.display = "flex";
+            document.getElementById("dz-img").src = prod.image;
+            document.getElementById("file-name").textContent = currentImgName;
+            document.getElementById("file-size").innerHTML = `<span style="color:#22c55e;font-weight:700;">Current Image</span>`;
+            uploadedBase64 = null; // No new image uploaded yet
+
+            // Live preview card update
+            document.getElementById("preview-img").src = prod.image;
+            document.getElementById("preview-img").style.display = "block";
+            document.getElementById("preview-placeholder").style.display = "none";
+            document.getElementById("preview-badge").textContent = prod.id;
+
+            // Change publish button style
+            const pubBtn = document.querySelector("button[onclick='publishProduct()']");
+            pubBtn.textContent = "💾 Save Changes";
+            pubBtn.style.background = "#d97706";
+            pubBtn.style.boxShadow = "0 4px 20px rgba(217,119,6,0.25)";
+            pubBtn.onmouseover = () => { pubBtn.style.background = "#b45309"; pubBtn.style.transform = "translateY(-1px)"; };
+            pubBtn.onmouseout = () => { pubBtn.style.background = "#d97706"; pubBtn.style.transform = "translateY(0)"; };
+
+            updatePreview();
+        }
+
+        function cancelEdit() {
+            editingProduct = null;
+            
+            // Hide banner
+            const editBanner = document.getElementById("edit-banner");
+            if (editBanner) editBanner.style.display = "none";
+            
+            // Reset Header Title and Subtext
+            document.querySelector("main h1").textContent = "Add New Catalog Product";
+            document.querySelector("main h1").nextElementSibling.textContent = "Fill in the form below to add a new product to the website catalog.";
+
+            // Reset publish button style
+            const pubBtn = document.querySelector("button[onclick='publishProduct()']");
+            pubBtn.textContent = "🚀 Publish Product";
+            pubBtn.style.background = "#c0392b";
+            pubBtn.style.boxShadow = "0 4px 20px rgba(192,57,43,0.25)";
+            pubBtn.onmouseover = () => { pubBtn.style.background = "#a93226"; pubBtn.style.transform = "translateY(-1px)"; };
+            pubBtn.onmouseout = () => { pubBtn.style.background = "#c0392b"; pubBtn.style.transform = "translateY(0)"; };
+
+            resetForm();
+        }
+
+        function toggleUnlist(id) {
+            const prod = activeProducts.find(p => p.id === id);
+            if (!prod) return;
+            
+            prod.unlisted = !prod.unlisted;
+            localStorage.setItem("PRODUCTS_DATA", JSON.stringify(activeProducts));
+            window.PRODUCTS_DATA = activeProducts;
+            
+            renderManageList();
+            showToast("success", prod.unlisted ? "Product Unlisted" : "Product Listed", `${id} is now ${prod.unlisted ? 'hidden from' : 'visible on'} the site.`);
+            
+            const isLocalServer = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.port === '8000';
+            if (isLocalServer) {
+                doLocalServerSync('save-catalog');
+            } else if (document.getElementById("gh-toggle").checked) {
+                syncCatalogToGitHub();
+            }
+        }
+
+        function deleteProduct(id) {
+            if (!confirm(`Are you sure you want to delete product ${id}? This action cannot be undone.`)) return;
+            
+            activeProducts = activeProducts.filter(p => p.id !== id);
+            localStorage.setItem("PRODUCTS_DATA", JSON.stringify(activeProducts));
+            window.PRODUCTS_DATA = activeProducts;
+            
+            renderManageList();
+            showToast("success", "Product Deleted", `${id} has been removed.`);
+            
+            const isLocalServer = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.port === '8000';
+            if (isLocalServer) {
+                doLocalServerSync('save-catalog');
+            } else if (document.getElementById("gh-toggle").checked) {
+                syncCatalogToGitHub();
+            }
+        }
+
+        function resetCatalogToDefault() {
+            if (!confirm("Are you sure you want to reset the catalog? All local changes (additions, edits, deletions, unlisting) will be overwritten with the default catalog from assets/products-data.js.")) return;
+            
+            let defaultProducts = typeof PRODUCTS_DATA !== 'undefined' ? PRODUCTS_DATA : [];
+            activeProducts = JSON.parse(JSON.stringify(defaultProducts));
+            localStorage.setItem("PRODUCTS_DATA", JSON.stringify(activeProducts));
+            window.PRODUCTS_DATA = activeProducts;
+            
+            renderManageList();
+            showToast("success", "Catalog Reset", "Catalog has been reverted to the default version.");
+            
+            const isLocalServer = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.port === '8000';
+            if (isLocalServer) {
+                doLocalServerSync('save-catalog');
+            } else if (document.getElementById("gh-toggle").checked) {
+                syncCatalogToGitHub();
+            }
+        }
+
+        // ============================================================
+        //  TOAST
+        // ============================================================
+        function showToast(type, title, msg) {
+            const wrap = document.getElementById("toast-wrap");
+            const t = document.createElement("div");
+            const colors = { success: "#22c55e", error: "#e74c3c", info: "#4f46e5" };
+            const icons  = { success: "✓", error: "⚠", info: "↻" };
+            t.className = "toast-anim";
+            t.style.cssText = "background:#fff;border:1px solid #eee;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,0.12);padding:14px 18px;display:flex;gap:12px;align-items:center;pointer-events:auto;width:100%;box-sizing:border-box;";
+            t.innerHTML = `
+                <div style="width:34px;height:34px;border-radius:50%;background:${colors[type]}20;color:${colors[type]};display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">${icons[type]}</div>
+                <div>
+                    <p style="font-size:12px;font-weight:700;color:#111;margin:0;">${title}</p>
+                    <p style="font-size:11px;color:#888;margin:2px 0 0;">${msg}</p>
+                </div>`;
+            wrap.appendChild(t);
+            setTimeout(() => { t.style.opacity = "0"; t.style.transform = "translateY(6px)"; t.style.transition = "all 0.3s"; setTimeout(() => t.remove(), 350); }, 4500);
+            return t;
+        }
+
+        // ============================================================
+        //  UTILITIES
+        // ============================================================
+        function formatBytes(b) {
+            if (b === 0) return "0 B";
+            const k = 1024, s = ["B","KB","MB","GB"], i = Math.floor(Math.log(b)/Math.log(k));
+            return (b/Math.pow(k,i)).toFixed(1) + " " + s[i];
+        }
+    </script>
+</body>
+</html>
