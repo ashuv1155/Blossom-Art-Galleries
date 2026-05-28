@@ -373,6 +373,22 @@
 
     <script src="https://cdn.jsdelivr.net/npm/lucide@0.453.0/dist/umd/lucide.min.js" defer></script>
     <script>
+        // High-Reliability Image Error Recovery
+        function handleImageError(img) {
+            if (!img.dataset.retried) {
+                img.dataset.retried = "true";
+                // Attempt to reload with a cache-buster after 3 seconds (giving GitHub Pages time to deploy)
+                setTimeout(() => {
+                    const originalSrc = img.src.split('?')[0];
+                    img.src = originalSrc + '?t=' + Date.now();
+                }, 3000);
+            } else {
+                // If it fails again, display a gorgeous, premium on-brand placeholder SVG
+                img.onerror = null;
+                img.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='100%' height='100%' fill='%23faf8f5'/><g transform='translate(200,120) scale(0.7)'><path d='M0,-50 C15,-20 40,-20 20,10 C5,25 0,40 0,40 C0,40 -5,25 -20,10 C-40,-20 -15,-20 0,-50 Z' fill='%23e0b0b4' opacity='0.8'/><path d='M0,-50 C-15,-20 -40,-20 -20,10 C-5,25 0,40 0,40 C0,40 5,25 20,10 C40,-20 15,-20 0,-50 Z' fill='%23e0b0b4' opacity='0.8' transform='rotate(72)'/><path d='M0,-50 C-15,-20 -40,-20 -20,10 C-5,25 0,40 0,40 C0,40 5,25 20,10 C40,-20 15,-20 0,-50 Z' fill='%23e0b0b4' opacity='0.8' transform='rotate(144)'/><path d='M0,-50 C-15,-20 -40,-20 -20,10 C-5,25 0,40 0,40 C0,40 5,25 20,10 C40,-20 15,-20 0,-50 Z' fill='%23e0b0b4' opacity='0.8' transform='rotate(216)'/><path d='M0,-50 C-15,-20 -40,-20 -20,10 C-5,25 0,40 0,40 C0,40 5,25 20,10 C40,-20 15,-20 0,-50 Z' fill='%23e0b0b4' opacity='0.8' transform='rotate(288)'/><circle cx='0' cy='15' r='10' fill='%23dfc15d'/></g><text x='50%' y='210' font-family='Georgia,serif' font-size='13' font-weight='bold' fill='%23b08e92' text-anchor='middle'>Blossom Art Galleries</text><text x='50%' y='230' font-family='sans-serif' font-size='10' fill='%23cca1a6' text-anchor='middle'>Image loading / temporary delayed...</text></svg>";
+            }
+        }
+
         document.addEventListener("DOMContentLoaded", () => {
             if (window.lucide) {
                 lucide.createIcons();
@@ -461,7 +477,7 @@
                     <div class="product-item product-card opacity-0 translate-y-3 transition-all duration-500 ease-out" data-category="${product.category}">
                         <div class="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden h-full flex flex-col border border-gray-50">
                             <div class="relative w-full aspect-[4/3] bg-gray-50 overflow-hidden flex-shrink-0">
-                                <img loading="lazy" src="${product.image}" alt="${product.alt}" title="${product.name}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                <img loading="lazy" src="${product.image}" alt="${product.alt}" title="${product.name}" onerror="handleImageError(this)" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                 <div class="absolute top-3 left-3 bg-primary text-white text-[9px] font-bold px-2.5 py-1.5 rounded-lg shadow-md">${product.id}</div>
                                 <div class="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
