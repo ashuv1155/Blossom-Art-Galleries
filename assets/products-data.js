@@ -1,4 +1,4 @@
-// Blossom Art Galleries — 303 Product Catalog Array
+// Blossom Art Galleries — Product Catalog Array
 const PRODUCTS_DATA = [
   {
     "id": "BAG ED 1",
@@ -382,7 +382,8 @@ const PRODUCTS_DATA = [
     "category": "artificial-flowers",
     "image": "assets/images/products/48.webp",
     "alt": "Single Artificial Pink Lotus Flower Stem with Leaf",
-    "description": "A realistic artificial lotus stem featuring two open pink blossoms, a closed bud, and broad green leaves."
+    "description": "A realistic artificial lotus stem featuring two open pink blossoms, a closed bud, and broad green leaves.",
+    "unlisted": false
   },
   {
     "id": "BAG FA 7",
@@ -2423,5 +2424,13 @@ const PRODUCTS_DATA = [
     "image": "assets/images/products/303.webp",
     "alt": "Premium Hanging Artificial Fern and Astilbe Garlands",
     "description": "Vibrant, multi-strand artificial green willow hanging creeper, perfect for natural backdrops and wedding foliage decorations."
+  },
+  {
+    "id": "BAG AF 26",
+    "name": "RIBBONS Pink Pack of 6 Chrysanthemum Artificial Flowers and Plants without Pot",
+    "category": "artificial-flowers",
+    "image": "assets/images/products/304.webp",
+    "alt": "RIBBONS Pink Pack of 6 Chrysanthemum Artificial Flowers and Plants without Pot",
+    "description": "Brighten your home with TIED RIBBONS Pink Artificial Chrysanthemums. This set includes six lifelike 29 cm faux flower sticks. They offer lasting colour without any maintenance. Pots are not included"
   }
 ];
