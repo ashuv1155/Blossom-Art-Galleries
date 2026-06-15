@@ -160,7 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const bagId = bagIdElement ? bagIdElement.textContent.trim() : "";
       
       const message = `Hello, I'm interested in ${bagId} (${productName}).`;
-      const whatsappUrl = `https://wa.me/919321421639?text=${encodeURIComponent(message)}`;
+      const whatsappUrl = `https://wa.me/918657777055?text=${encodeURIComponent(message)}`;
       
       window.open(whatsappUrl, "_blank");
     }
